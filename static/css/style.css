@@ -1,0 +1,152 @@
+/* ==========================================
+   1. VARIABLES & RESET
+   ========================================== */
+:root {
+    --coffee: #36221c;
+    --caramel: #b87d4b;
+    --cream: #fffaf4;
+    --glass-bg: rgba(255, 250, 244, 0.95);
+    --border-color: rgba(54, 34, 28, 0.08);
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure body doesn't break sticky flow */
+html, body {
+    overflow-x: hidden; /* Prevents side-scrolling without breaking sticky top */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cream);
+    color: var(--coffee);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==========================================
+   2. HEADER & NAVIGATION
+   ========================================== */
+header {
+    background: var(--glass-bg);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Raised z-index to guarantee header stays above content */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(54, 34, 28, 0.03);
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 90px;
+    padding: 0 40px;
+}
+
+/* Logo Grouping */
+.logo-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 45px;        
+    height: 45px;      
+    object-fit: cover;
+    border-radius: 50%; 
+    border: 2px solid var(--caramel);
+}
+
+.logo {
+    color: var(--coffee);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--coffee);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    padding: 6px 0;
+    transition: var(--transition);
+}
+
+/* Hover Effect */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--caramel);
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--caramel);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* CTA Button (Login) */
+.nav-links li:last-child a {
+    background-color: var(--coffee);
+    color: var(--cream);
+    padding: 10px 24px;
+    border-radius: 50px;
+    transition: var(--transition);
+}
+
+.nav-links li:last-child a:hover {
+    background-color: var(--caramel);
+    transform: translateY(-2px);
+}
+
+.nav-links li:last-child a::after {
+    display: none;
+}
+
+/* Main Content Wrapper */
+main {
+    flex: 1; /* Pushes content down properly without overlapping */
+    width: 100%;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 20px;
+    }
+    .nav-links {
+        gap: 20px;
+    }
+}

@@ -1,0 +1,216 @@
+/* ==========================================================
+   Tokens (shared with about page — keep in sync)
+   ========================================================== */
+.locations-container {
+    --ink: #191D2B;
+    --paper: #F8F6F1;
+    --sand: #EFEBE2;
+    --accent: #3B5B6D;
+    --clay: #C1793B;
+    --line: #D8D2C4;
+    --muted: #6B6F7B;
+
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 20px 100px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+}
+
+.locations-container h1,
+.locations-container h2 {
+    font-family: 'Fraunces', Georgia, serif;
+}
+
+/* ==========================================================
+   Hero
+   ========================================================== */
+.locations-hero {
+    text-align: center;
+    padding: 20px 20px 44px;
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin: 0 0 18px;
+}
+
+.locations-hero h1 {
+    font-size: 2.8rem;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    color: var(--ink);
+}
+
+.hero-rule {
+    width: 64px;
+    height: 2px;
+    background: var(--accent);
+    margin: 0 auto 20px;
+}
+
+.hero-sub {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* ==========================================================
+   Locations grid / cards
+   ========================================================== */
+.locations-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.location-card {
+    display: flex;
+    flex-direction: row;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 30px rgba(25, 29, 43, 0.08);
+}
+
+.location-info {
+    flex: 1;
+    padding: 38px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 280px;
+}
+
+.branch-tag {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+}
+
+.location-info h2 {
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 6px;
+}
+
+.branch-name {
+    font-size: 0.95rem;
+    color: var(--clay);
+    font-weight: 600;
+    margin: 0 0 24px;
+}
+
+/* Detail rows */
+.detail-list {
+    margin: 0 0 26px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+}
+
+.detail-row {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 12px;
+    padding: 8px 0;
+}
+
+.detail-row dt {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+}
+
+.detail-row dd {
+    font-size: 0.98rem;
+    color: var(--ink);
+    margin: 0;
+}
+
+/* CTA */
+.btn-directions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 26px;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.94rem;
+    border-radius: 2px;
+    width: fit-content;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-arrow {
+    transition: transform 0.2s ease;
+}
+
+.btn-directions:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+.btn-directions:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+/* Map */
+.map-container {
+    flex: 1;
+    min-height: 320px;
+    border-left: 1px solid var(--line);
+}
+
+.map-container iframe {
+    display: block;
+    filter: grayscale(15%) contrast(1.02);
+}
+
+/* ==========================================================
+   Responsive
+   ========================================================== */
+@media (max-width: 768px) {
+    .locations-hero h1 { font-size: 2.1rem; }
+
+    .location-card {
+        flex-direction: column;
+    }
+
+    .map-container {
+        height: 250px;
+        border-left: none;
+        border-top: 1px solid var(--line);
+    }
+}
+.locations-container {
+    padding-top: 91px;
+}

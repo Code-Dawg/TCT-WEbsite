@@ -1,0 +1,95 @@
+{% extends 'nav.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/location.css' %}">
+{% endblock %}
+{% block content %}
+<div class="locations-container">
+
+    <header class="locations-hero">
+        <p class="eyebrow">Visit Us</p>
+        <h1>Find your nearest spot</h1>
+        <div class="hero-rule"></div>
+        <p class="hero-sub">Two locations across Pokhara, each open every day for tea, food, and good company.</p>
+    </header>
+
+    <section class="locations-grid">
+
+        <!-- Branch 1 -->
+        <div class="location-card">
+            <div class="location-info">
+                <span class="branch-tag">Branch 01</span>
+                <h2>Uptown Cafe</h2>
+                <p class="branch-name">The Cutting Tea Cafe</p>
+
+                <dl class="detail-list">
+                    <div class="detail-row">
+                        <dt>Address</dt>
+                        <dd>Nadipur, Pokhara</dd>
+                    </div>
+                    <div class="detail-row">
+                        <dt>Hours</dt>
+                        <dd>Mon – Sun, 7:00 AM – 8:30 PM</dd>
+                    </div>
+                    <div class="detail-row">
+                        <dt>Phone</dt>
+                        <dd>9819120024</dd>
+                    </div>
+                </dl>
+
+                <a href="https://maps.google.com" target="_blank" class="btn-directions">Get directions <span class="btn-arrow">→</span></a>
+            </div>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.1487391435226!2d83.98670837620061!3d28.233164802103058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399595abbf22e6b7%3A0xa103dbc4929960b7!2sThe%20Cutting%20Tea%20Caf%C3%A9!5e0!3m2!1sen!2snp!4v1785514043278!5m2!1sen!2snp"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Branch 2 -->
+        <div class="location-card">
+            <div class="location-info">
+                <span class="branch-tag">Branch 02</span>
+                <h2>Downtown Restaurant</h2>
+                <p class="branch-name">The Cutting Tea Restaurant</p>
+
+                <dl class="detail-list">
+                    <div class="detail-row">
+                        <dt>Address</dt>
+                        <dd>Simalchaur, Pokhara</dd>
+                    </div>
+                    <div class="detail-row">
+                        <dt>Hours</dt>
+                        <dd>Mon – Sun, 7:00 AM – 8:30 PM</dd>
+                    </div>
+                    <div class="detail-row">
+                        <dt>Phone</dt>
+                        <dd>9819120024</dd>
+                    </div>
+                </dl>
+
+                <a href="https://maps.google.com" target="_blank" class="btn-directions">Get directions <span class="btn-arrow">→</span></a>
+            </div>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3516.019231068212!2d83.97694327619999!3d28.206728303288177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995957347bffde9%3A0x4f8a3b58b59d7654!2sThe%20Cutting%20Tea%20Restaurant!5e0!3m2!1sen!2snp!4v1785514192675!5m2!1sen!2snp"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+    </section>
+</div>
+{% endblock %}

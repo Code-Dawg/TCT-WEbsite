@@ -1,0 +1,63 @@
+/* =======================================
+   Image Slider Styles 
+   ======================================= */
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px; /* Limits slider width on large displays */
+    height: 620px;      /* Set your preferred slider height */
+    margin: 40px auto;  /* Centers the slider on the page */
+    overflow: hidden;   /* Conceals images waiting in the queue */
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+.slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Creates a smooth gliding ease */
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps images crisp without stretching distortion */
+}
+
+/* Indicator Dots Layout */
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+.dot.active {
+    background: #ffffff;
+    transform: scale(1.2);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+.main{
+    background-color: #faf8f5;
+}

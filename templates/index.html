@@ -1,0 +1,136 @@
+{% extends 'nav.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/review.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- HERO SLIDER SECTION -->
+<section class="hero-section" id="home">
+    <div class="slider-container">
+        <div class="slider" id="slider">
+            <div class="slide active">
+                <img src="{% static 'image/download.jpeg' %}" alt="Freshly brewed cutting chai">
+            </div>
+            <div class="slide">
+                <img src="{% static 'image/images (1).jpeg' %}" alt="Cozy seating area at The Cutting Tea"> 
+            </div>
+            <div class="slide">
+                <img src="{% static 'image/unnamed.jpg' %}" alt="Specialty snacks and tea">
+            </div>
+        </div>
+
+        <!-- Dark Gradient Overlay for Readability -->
+        <div class="hero-overlay"></div>
+
+        <!-- Floating Hero Banner Content -->
+        <div class="hero-content">
+            <span class="hero-tagline">Authentic • Fresh • Warm</span>
+            <h1 class="hero-title">Experience the True Taste of Cutting Tea</h1>
+            <p class="hero-subtitle">Every sip tells a story. Step in for handcrafted teas, authentic spices, and memorable moments.</p>
+            <div class="hero-cta-group">
+                <a href="{% url 'menu' %}" class="btn btn-primary">Explore Menu</a>
+                <a href="{% url 'location' %}" class="btn btn-secondary">Find Our Spot</a>
+            </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <button class="slider-btn prev" onclick="moveSlide(-1)" aria-label="Previous Slide">&#10094;</button>
+        <button class="slider-btn next" onclick="moveSlide(1)" aria-label="Next Slide">&#10095;</button>
+
+        <div class="slider-dots" role="navigation" aria-label="Slide Navigation">
+            <span class="dot active" onclick="currentSlide(0)" aria-label="Slide 1"></span>
+            <span class="dot" onclick="currentSlide(1)" aria-label="Slide 2"></span>
+            <span class="dot" onclick="currentSlide(2)" aria-label="Slide 3"></span>
+        </div>
+    </div>
+</section>
+
+<!-- VALUE PROPOSITION / FEATURES SECTION -->
+<section class="features-section">
+    <div class="features-container">
+        <div class="feature-item">
+            <div class="feature-icon">🍵</div>
+            <h3>Authentic Recipes</h3>
+            <p>Traditional spice blends brewed fresh every single hour.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🌿</div>
+            <h3>100% Organic Leaves</h3>
+            <p>Sourced directly from premium tea gardens across the region.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">✨</div>
+            <h3>Cozy Ambiance</h3>
+            <p>The perfect corner for casual catch-ups, work, or relaxing.</p>
+        </div>
+    </div>
+</section>
+
+<!-- COMMUNITY REVIEWS SECTION -->
+<section class="reviews-section" id="reviews">
+    <div class="section-header">
+        <span class="sub-heading">Testimonials</span>
+        <h2>What People Are Saying About <span>The Cutting Tea</span></h2>
+        <p>Don't just take our word for it—here is what our community loves about us.</p>
+    </div>
+
+    <div class="reviews-container">
+        <!-- Review Card 1 -->
+        <article class="review-card">
+            <div class="review-header">
+                <div class="review-profile">
+                    <div class="review-avatar avatar-placeholder" aria-hidden="true">RS</div>
+                    <div class="review-author-info">
+                        <h3>Rahul Sharma</h3>
+                        <span class="review-badge">Local Guide • Google</span>
+                    </div>
+                </div>
+                <div class="review-rating" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</div>
+            </div>
+            <blockquote class="review-text">
+                "Best cutting chai in town! Reminds me of the authentic tapri taste. The hygiene is great and the staff is incredibly polite."
+            </blockquote>
+        </article>
+
+        <!-- Review Card 2 -->
+        <article class="review-card">
+            <div class="review-header">
+                <div class="review-profile">
+                    <div class="review-avatar avatar-placeholder" aria-hidden="true">PK</div>
+                    <div class="review-author-info">
+                        <h3>Priya Kapoor</h3>
+                        <span class="review-badge">Google Reviewer</span>
+                    </div>
+                </div>
+                <div class="review-rating" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</div>
+            </div>
+            <blockquote class="review-text">
+                "The perfect blend of spices. Their ginger-elaichi cutting tea is an absolute mood lifter after a long day of work!"
+            </blockquote>
+        </article>
+
+        <!-- Review Card 3 -->
+        <article class="review-card">
+            <div class="review-header">
+                <div class="review-profile">
+                    <div class="review-avatar avatar-placeholder" aria-hidden="true">AR</div>
+                    <div class="review-author-info">
+                        <h3>Aasish Regmi</h3>
+                        <span class="review-badge">Google Reviewer</span>
+                    </div>
+                </div>
+                <div class="review-rating" aria-label="4 out of 5 stars">⭐⭐⭐⭐☆</div>
+            </div>
+            <blockquote class="review-text">
+                "A nice and comfortable place to spend time in Pokhara! The tea and food were good, and the atmosphere is decent. Had a good overall time!"
+            </blockquote>
+        </article>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/home-slider.js' %}" defer></script>
+{% endblock %}
