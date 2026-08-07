@@ -1,4 +1,16 @@
 {% extends 'nav.html' %}
+{% load static %}
+
 {% block content %}
-<hi> this is body part</hi>
+<div class="locations-hero" style="min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+    <div class="locations-hero-content">
+        <span class="section-badge">The Cutting Tea</span>
+        <h1>Welcome to The Cutting Tea</h1>
+        <p>Explore our menu or visit our Nadipur and Simalchaur outlets in Pokhara.</p>
+        <div style="margin-top: 24px; display: flex; gap: 16px; justify-content: center;">
+            <a href="{% url 'menu' %}" class="btn btn-primary">View Full Menu</a>
+            <a href="{% url 'location' %}" class="btn btn-secondary" style="border-color: #fff; color: #fff;">Find Outlets</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

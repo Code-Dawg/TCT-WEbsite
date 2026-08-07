@@ -1,0 +1,63 @@
+{% extends 'nav.html' %}
+{% load static %}
+
+{% block title %}Gallery | The Cutting Tea{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="gallery-hero">
+    <div class="gallery-content">
+        <p class="gallery-label">The Cutting Tea</p>
+        <h1>Our Cafe Gallery</h1>
+        <p>A look at the chai, food, and warm moments from our Pokhara cafes.</p>
+    </div>
+</section>
+
+<section class="gallery-section" aria-label="Photos of The Cutting Tea cafe">
+    <div class="gallery-upload">
+        <div>
+            <p class="gallery-label">Share a memory</p>
+            <h2>Add a cafe photo</h2>
+            <p>Upload a JPG, PNG, or WebP photo up to 5 MB. We review photos before displaying them.</p>
+        </div>
+        <form method="post" enctype="multipart/form-data" class="gallery-upload-form">
+            {% csrf_token %}
+            {% if form.non_field_errors %}<div class="form-errors">{{ form.non_field_errors }}</div>{% endif %}
+            <label for="{{ form.caption.id_for_label }}">Caption</label>
+            {{ form.caption }}
+            <label for="{{ form.image.id_for_label }}">Photo</label>
+            {{ form.image }}
+            {% if form.image.errors %}<div class="form-errors">{{ form.image.errors }}</div>{% endif %}
+            <button class="btn btn-primary" type="submit">Upload Photo</button>
+        </form>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}<p class="gallery-message">{{ message }}</p>{% endfor %}
+    {% endif %}
+
+    <div class="gallery-grid">
+        <figure class="gallery-photo gallery-photo-large">
+            <img src="{% static 'image/download.jpeg' %}" alt="Fresh cutting chai at The Cutting Tea">
+            <figcaption>Freshly brewed cutting chai</figcaption>
+        </figure>
+        <figure class="gallery-photo">
+            <img src="{% static 'image/images (1).jpeg' %}" alt="The Cutting Tea cafe interior">
+            <figcaption>Our cosy cafe space</figcaption>
+        </figure>
+        <figure class="gallery-photo">
+            <img src="{% static 'image/unnamed.jpg' %}" alt="Food and drinks at The Cutting Tea">
+            <figcaption>Chai and cafe favourites</figcaption>
+        </figure>
+        {% for photo in photos %}
+        <figure class="gallery-photo">
+            <img src="{{ photo.image.url }}" alt="{{ photo.caption|default:'Visitor photo from The Cutting Tea cafe' }}">
+            {% if photo.caption %}<figcaption>{{ photo.caption }}</figcaption>{% endif %}
+        </figure>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

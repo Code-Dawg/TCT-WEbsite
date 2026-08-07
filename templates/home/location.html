@@ -1,95 +1,199 @@
 {% extends 'nav.html' %}
 {% load static %}
+
 {% block extra_css %}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/location.css' %}">
 {% endblock %}
-{% block content %}
-<div class="locations-container">
 
+{% block content %}
+<div class="locations-page">
+    
+    <!-- Hero Header -->
     <header class="locations-hero">
-        <p class="eyebrow">Visit Us</p>
-        <h1>Find your nearest spot</h1>
-        <div class="hero-rule"></div>
-        <p class="hero-sub">Two locations across Pokhara, each open every day for tea, food, and good company.</p>
+        <div class="locations-hero-content">
+            <span class="section-badge">Visit Us In Pokhara</span>
+            <h1>Our Cafe & Restaurant Outlets</h1>
+            <div class="hero-rule"></div>
+            <p>Two prime locations across Pokhara serving hot cutting chai, artisanal bakes, and delicious meals every day.</p>
+        </div>
     </header>
 
-    <section class="locations-grid">
+    <div class="locations-container">
+        
+        <!-- Outlets Grid -->
+        <section class="locations-grid">
 
-        <!-- Branch 1 -->
-        <div class="location-card">
-            <div class="location-info">
-                <span class="branch-tag">Branch 01</span>
-                <h2>Uptown Cafe</h2>
-                <p class="branch-name">The Cutting Tea Cafe</p>
+            <!-- Branch 1: Nadipur -->
+            <div class="location-card">
+                <div class="location-info">
+                    <div class="branch-header">
+                        <span class="branch-tag">Branch 01 • Uptown</span>
+                    </div>
+                    
+                    <h2>Uptown Cafe</h2>
+                    <p class="branch-name">The Cutting Tea Cafe — Nadipur</p>
 
-                <dl class="detail-list">
-                    <div class="detail-row">
-                        <dt>Address</dt>
-                        <dd>Nadipur, Pokhara</dd>
-                    </div>
-                    <div class="detail-row">
-                        <dt>Hours</dt>
-                        <dd>Mon – Sun, 7:00 AM – 8:30 PM</dd>
-                    </div>
-                    <div class="detail-row">
-                        <dt>Phone</dt>
-                        <dd>9819120024</dd>
-                    </div>
-                </dl>
+                    <dl class="detail-list">
+                        <div class="detail-row">
+                            <dt>📍 Address</dt>
+                            <dd>Nadipur, Pokhara, Nepal</dd>
+                        </div>
+                        <div class="detail-row">
+                            <dt>⏰ Opening Hours</dt>
+                            <dd>Mon – Sun: 7:00 AM – 8:30 PM</dd>
+                        </div>
+                        <div class="detail-row">
+                            <dt>📞 Phone</dt>
+                            <dd><a href="tel:9819120024">9819120024</a></dd>
+                        </div>
+                    </dl>
 
-                <a href="https://maps.google.com" target="_blank" class="btn-directions">Get directions <span class="btn-arrow">→</span></a>
+                    <!-- Amenities Badges -->
+                    <div class="amenities-group">
+                        <span class="amenity-chip">📶 Free Wi-Fi</span>
+                        <span class="amenity-chip">🌿 Outdoor Seating</span>
+                        <span class="amenity-chip">🔌 Laptop Power</span>
+                        <span class="amenity-chip">🥡 Takeaway</span>
+                    </div>
+
+                    <div class="location-card-actions">
+                        <a href="https://maps.google.com/?q=The+Cutting+Tea+Cafe+Nadipur+Pokhara" target="_blank" class="btn btn-primary btn-sm">Get Directions →</a>
+                        <button onclick="openOrderModal(event)" class="btn btn-secondary btn-sm">Order for Pickup</button>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.1487391435226!2d83.98670837620061!3d28.233164802103058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399595abbf22e6b7%3A0xa103dbc4929960b7!2sThe%20Cutting%20Tea%20Caf%C3%A9!5e0!3m2!1sen!2snp!4v1785514043278!5m2!1sen!2snp"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        title="Nadipur Outlet Map">
+                    </iframe>
+                </div>
             </div>
-            <div class="map-container">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.1487391435226!2d83.98670837620061!3d28.233164802103058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399595abbf22e6b7%3A0xa103dbc4929960b7!2sThe%20Cutting%20Tea%20Caf%C3%A9!5e0!3m2!1sen!2snp!4v1785514043278!5m2!1sen!2snp"
-                    width="100%"
-                    height="100%"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy">
-                </iframe>
-            </div>
-        </div>
 
-        <!-- Branch 2 -->
-        <div class="location-card">
-            <div class="location-info">
-                <span class="branch-tag">Branch 02</span>
-                <h2>Downtown Restaurant</h2>
-                <p class="branch-name">The Cutting Tea Restaurant</p>
-
-                <dl class="detail-list">
-                    <div class="detail-row">
-                        <dt>Address</dt>
-                        <dd>Simalchaur, Pokhara</dd>
+            <!-- Branch 2: Simalchaur -->
+            <div class="location-card">
+                <div class="location-info">
+                    <div class="branch-header">
+                        <span class="branch-tag">Branch 02 • Downtown</span>
                     </div>
-                    <div class="detail-row">
-                        <dt>Hours</dt>
-                        <dd>Mon – Sun, 7:00 AM – 8:30 PM</dd>
-                    </div>
-                    <div class="detail-row">
-                        <dt>Phone</dt>
-                        <dd>9819120024</dd>
-                    </div>
-                </dl>
 
-                <a href="https://maps.google.com" target="_blank" class="btn-directions">Get directions <span class="btn-arrow">→</span></a>
-            </div>
-            <div class="map-container">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3516.019231068212!2d83.97694327619999!3d28.206728303288177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995957347bffde9%3A0x4f8a3b58b59d7654!2sThe%20Cutting%20Tea%20Restaurant!5e0!3m2!1sen!2snp!4v1785514192675!5m2!1sen!2snp"
-                    width="100%"
-                    height="100%"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy">
-                </iframe>
-            </div>
-        </div>
+                    <h2>Downtown Restaurant</h2>
+                    <p class="branch-name">The Cutting Tea Restaurant — Simalchaur</p>
 
-    </section>
+                    <dl class="detail-list">
+                        <div class="detail-row">
+                            <dt>📍 Address</dt>
+                            <dd>Simalchaur, Pokhara, Nepal</dd>
+                        </div>
+                        <div class="detail-row">
+                            <dt>⏰ Opening Hours</dt>
+                            <dd>Mon – Sun: 7:00 AM – 8:30 PM</dd>
+                        </div>
+                        <div class="detail-row">
+                            <dt>📞 Phone</dt>
+                            <dd><a href="tel:9819120024">9819120024</a></dd>
+                        </div>
+                    </dl>
+
+                    <!-- Amenities Badges -->
+                    <div class="amenities-group">
+                        <span class="amenity-chip">📶 Free Wi-Fi</span>
+                        <span class="amenity-chip">🍽️ Family Dining</span>
+                        <span class="amenity-chip">🅿️ Bike & Car Parking</span>
+                        <span class="amenity-chip">🥡 Takeaway</span>
+                    </div>
+
+                    <div class="location-card-actions">
+                        <a href="https://maps.google.com/?q=The+Cutting+Tea+Restaurant+Simalchaur+Pokhara" target="_blank" class="btn btn-primary btn-sm">Get Directions →</a>
+                        <button onclick="openOrderModal(event)" class="btn btn-secondary btn-sm">Order for Pickup</button>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3516.019231068212!2d83.97694327619999!3d28.206728303288177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995957347bffde9%3A0x4f8a3b58b59d7654!2sThe%20Cutting%20Tea%20Restaurant!5e0!3m2!1sen!2snp!4v1785514192675!5m2!1sen!2snp"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        title="Simalchaur Outlet Map">
+                    </iframe>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Direct Contact & Inquiry Form Section -->
+        <section class="contact-inquiry-section">
+            <div class="contact-grid">
+                <div class="contact-info-panel">
+                    <span class="section-badge">Get In Touch</span>
+                    <h2>Have a Question or Special Party Order?</h2>
+                    <p>Whether you're looking for catering services, corporate bulk chai orders, or birthday table bookings, send us a message!</p>
+                    
+                    <div class="contact-detail-items">
+                        <div class="c-item">
+                            <span class="c-icon">📞</span>
+                            <div>
+                                <h4>Hotline & WhatsApp</h4>
+                                <p><a href="tel:9819120024">+977 9819120024</a></p>
+                            </div>
+                        </div>
+                        <div class="c-item">
+                            <span class="c-icon">📍</span>
+                            <div>
+                                <h4>Location Outlets</h4>
+                                <p>Nadipur & Simalchaur, Pokhara, Nepal</p>
+                            </div>
+                        </div>
+                        <div class="c-item">
+                            <span class="c-icon">⏰</span>
+                            <div>
+                                <h4>Operating Schedule</h4>
+                                <p>Open 7 Days a Week (7:00 AM - 8:30 PM)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-panel">
+                    <h3>Send Us A Message</h3>
+                    <form class="inquiry-form" onsubmit="handleInquirySubmit(event)">
+                        <div class="form-group">
+                            <label for="contactName">Your Name *</label>
+                            <input type="text" id="contactName" required placeholder="e.g. Rahul Regmi">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">Phone / WhatsApp Number *</label>
+                            <input type="tel" id="contactPhone" required placeholder="e.g. 9819120024">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactOutlet">Preferred Outlet</label>
+                            <select id="contactOutlet">
+                                <option value="Nadipur - Uptown Cafe">Nadipur (Uptown Cafe)</option>
+                                <option value="Simalchaur - Downtown Restaurant">Simalchaur (Downtown Restaurant)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMsg">Message / Party Inquiry *</label>
+                            <textarea id="contactMsg" rows="3" required placeholder="Tell us how we can help you..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Submit Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/location.js' %}" defer></script>
 {% endblock %}

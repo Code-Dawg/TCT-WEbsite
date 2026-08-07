@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-fkfq_3##xc@5cwlrvyxvs5f+94+bj^p3e@jk(8n*_3213v=$yb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Permit Django's development server and test client while DEBUG is enabled.
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'testserver']
 
 
 # Application definition
@@ -38,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'menu',
+    'about',
+    'location',
+    'reservations',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +125,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# Visitor-uploaded gallery images (use managed object storage in production).
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

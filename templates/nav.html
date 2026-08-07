@@ -4,41 +4,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}The Cutting Tea{% endblock %}</title>
+    <title>{% block title %}The Cutting Tea | Artisanal Chai & Cafe in Pokhara{% endblock %}</title>
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Welcome to The Cutting Tea Cafe in Pokhara. Taste authentic Mumbai tapri chai, saffron matka tea, artisanal morning bakes, gourmet burgers, and fresh snacks across Nadipur and Simalchaur outlets.">
+    <meta name="keywords" content="The Cutting Tea, MU Cafe, Pokhara Cafe, Cutting Chai, Pokhara Tea House, Nadipur Cafe, Simalchaur Restaurant">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="{% static 'image/images.jpeg' %}">
 
-    <!-- CSS Stylesheets -->
+    <!-- Global CSS Stylesheets -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
 
-    <header>
+    <!-- Main Navigation Header -->
+    <header class="site-header" id="mainHeader">
         <nav class="navbar">
             <a href="{% url 'display' %}" class="logo-brand">
-                <img class="logo-img" src="{% static 'image/images.jpeg' %}" alt="The Cutting Tea Logo">
-                <div class="logo">The Cutting Tea</div>
+                <div class="logo-img-wrapper">
+                    <img class="logo-img" src="{% static 'image/images.jpeg' %}" alt="The Cutting Tea Logo">
+                </div>
+                <div class="logo-text-group">
+                    <span class="logo-title">The Cutting Tea</span>
+                    <span class="logo-tagline">ARTISANAL CHAI & BITES</span>
+                </div>
             </a>
             
+            <!-- Desktop Links -->
             <ul class="nav-links">
-                <li><a href="{% url 'display' %}">Home</a></li>
-                <li><a href="{% url 'menu' %}">Menu</a></li>
-                <li><a href="{% url 'aboutus' %}">About Us</a></li>
-                <li><a href="{% url 'location' %}">Location</a></li>
-                <li><a href="#login">Login</a></li>
+                <li><a href="{% url 'display' %}" class="{% if request.resolver_match.url_name == 'display' %}active{% endif %}">Home</a></li>
+                <li><a href="{% url 'menu' %}" class="{% if request.resolver_match.url_name == 'menu' %}active{% endif %}">Menu</a></li>
+                <li><a href="{% url 'gallery' %}" class="{% if request.resolver_match.url_name == 'gallery' %}active{% endif %}">Gallery</a></li>
+                <li><a href="{% url 'aboutus' %}" class="{% if request.resolver_match.url_name == 'aboutus' %}active{% endif %}">About Us</a></li>
+                <li><a href="{% url 'location' %}" class="{% if request.resolver_match.url_name == 'location' %}active{% endif %}">Outlets & Map</a></li>
+                <li>
+                    <button class="nav-btn-reserve" onclick="openOrderModal(event)">
+                        <span>Order for Pickup</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a4 4 0 01-4 4H7l-4 3V7a4 4 0 014-4h10a4 4 0 014 4z"/></svg>
+                    </button>
+                </li>
             </ul>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button class="mobile-nav-toggle" id="mobileNavToggle" onclick="toggleMobileNav()" aria-label="Toggle navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </nav>
+
+        <!-- Mobile Side Drawer -->
+        <div class="mobile-nav-drawer" id="mobileNavDrawer">
+            <div class="mobile-drawer-header">
+                <div class="logo-brand">
+                    <img class="logo-img" src="{% static 'image/images.jpeg' %}" alt="Logo">
+                    <span class="logo-title">The Cutting Tea</span>
+                </div>
+                <button class="drawer-close-btn" onclick="toggleMobileNav()">&times;</button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="{% url 'display' %}" onclick="toggleMobileNav()">Home</a></li>
+                <li><a href="{% url 'menu' %}" onclick="toggleMobileNav()">Full Menu</a></li>
+                <li><a href="{% url 'gallery' %}" onclick="toggleMobileNav()">Gallery</a></li>
+                <li><a href="{% url 'aboutus' %}" onclick="toggleMobileNav()">About Us</a></li>
+                <li><a href="{% url 'location' %}" onclick="toggleMobileNav()">Outlets & Map</a></li>
+            </ul>
+            <div class="mobile-drawer-actions">
+                <button class="btn btn-primary btn-full" onclick="toggleMobileNav(); openOrderModal(event)">Order for Pickup</button>
+                <div class="mobile-contact-info">
+                    <p>📍 Nadipur & Simalchaur, Pokhara</p>
+                    <p>📞 Call: 9819120024</p>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="toggleMobileNav()"></div>
     </header>
 
+    <!-- Main Content Block -->
     <main>
         {% block content %}
         {% endblock %}
     </main>
 
+    <!-- Global pickup order modal -->
+    <div class="modal-backdrop" id="reservationModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeOrderModal()">&times;</button>
+            <div class="modal-header">
+                <span class="modal-badge">Pickup Orders</span>
+                <h3 id="modalTitle">Order Online for Pickup</h3>
+                <p>Place your order now, then collect it from your selected Pokhara outlet.</p>
+            </div>
+            <form class="modal-form" onsubmit="handleOrderSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="resName">Full Name *</label>
+                        <input type="text" id="resName" required placeholder="e.g. Darshan Sharma">
+                    </div>
+                    <div class="form-group">
+                        <label for="resPhone">Phone / WhatsApp Number *</label>
+                        <input type="tel" id="resPhone" required placeholder="e.g. 9819120024">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="resBranch">Select Outlet *</label>
+                        <select id="resBranch" required>
+                            <option value="Nadipur - Uptown Cafe">Branch 01: Nadipur (Uptown Cafe)</option>
+                            <option value="Simalchaur - Downtown Restaurant">Branch 02: Simalchaur (Downtown Restaurant)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="resQuantity">Quantity *</label>
+                        <select id="resQuantity" required>
+                            <option value="1" selected>1 item</option>
+                            <option value="2">2 items</option>
+                            <option value="3">3 items</option>
+                            <option value="4">4 items</option>
+                            <option value="5+">5+ items</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="resDate">Pickup Date *</label>
+                        <input type="date" id="resDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="resTime">Pickup Time *</label>
+                        <input type="time" id="resTime" required value="16:00">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="resNotes">Your Order & Notes *</label>
+                    <textarea id="resNotes" rows="3" required placeholder="e.g. 2 Matka Tea, 1 Chicken Burger. No onions, please."></textarea>
+                </div>
+                <p class="form-help">Your order will open in WhatsApp so our team can confirm it and call you if needed.</p>
+                <button type="submit" class="btn btn-primary btn-full btn-modal-submit">Send Order on WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Global Footer -->
+    {% include 'footer.html' %}
+
+    <!-- Global JS -->
+    <script src="{% static 'js/global.js' %}"></script>
     {% block extra_js %}{% endblock %}
 
 </body>

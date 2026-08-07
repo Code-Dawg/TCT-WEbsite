@@ -1,14 +1,28 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import redirect, render
 
-# Create your views here.
+from .forms import GalleryPhotoForm
+from .models import GalleryPhoto
+
 def DisplayView(request):
-    return render(request,'index.html')
+    """Render main home landing page."""
+    return render(request, 'index.html')
 
 def BodyView(request):
-    return render(request,'home/body.html')
-def MenuView(request):
-    return render(request,'home/menu.html')
-def AboutUsView(request):
-    return render(request,'home/aboutus.html')
-def LocationView(request):
-    return render(request,'home/location.html')
+    """Render legacy body view if requested."""
+    return render(request, 'home/body.html')
+
+
+def GalleryView(request):
+    """Show approved cafe photos and accept photo submissions."""
+    if request.method == 'POST':
+        form = GalleryPhotoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Thanks for sharing! Your photo will appear after approval.')
+            return redirect('gallery')
+    else:
+        form = GalleryPhotoForm()
+
+    photos = GalleryPhoto.objects.filter(is_approved=True)
+    return render(request, 'gallery.html', {'form': form, 'photos': photos})

@@ -11,13 +11,16 @@
     <div class="slider-container">
         <div class="slider" id="slider">
             <div class="slide active">
-                <img src="{% static 'image/download.jpeg' %}" alt="Freshly brewed cutting chai">
+                <img src="{% static 'image/download.jpeg' %}" alt="Freshly brewed cutting chai in traditional glass">
+                <div class="slide-ambient-glow"></div>
             </div>
             <div class="slide">
-                <img src="{% static 'image/images (1).jpeg' %}" alt="Cozy seating area at The Cutting Tea"> 
+                <img src="{% static 'image/images (1).jpeg' %}" alt="Cozy seating area at The Cutting Tea Pokhara"> 
+                <div class="slide-ambient-glow"></div>
             </div>
             <div class="slide">
-                <img src="{% static 'image/unnamed.jpg' %}" alt="Specialty snacks and tea">
+                <img src="{% static 'image/unnamed.jpg' %}" alt="Specialty snacks, morning bakes, and masala tea">
+                <div class="slide-ambient-glow"></div>
             </div>
         </div>
 
@@ -26,12 +29,40 @@
 
         <!-- Floating Hero Banner Content -->
         <div class="hero-content">
-            <span class="hero-tagline">Authentic • Fresh • Warm</span>
-            <h1 class="hero-title">Experience the True Taste of Cutting Tea</h1>
-            <p class="hero-subtitle">Every sip tells a story. Step in for handcrafted teas, authentic spices, and memorable moments.</p>
+            <div class="hero-badge-pill">
+                <span class="badge-icon">☕</span>
+                <span>Pokhara's #1 Authentic Chai Lounge</span>
+            </div>
+            
+            <h1 class="hero-title">Experience the True Taste of <span>Cutting Chai</span></h1>
+            <p class="hero-subtitle">Handcrafted cutting chai simmered with fresh crushed ginger, cardamom, and whole spices. Served hot alongside artisanal bakes & sizzling bites.</p>
+            
             <div class="hero-cta-group">
-                <a href="{% url 'menu' %}" class="btn btn-primary">Explore Menu</a>
-                <a href="{% url 'location' %}" class="btn btn-secondary">Find Our Spot</a>
+                <a href="{% url 'menu' %}" class="btn btn-primary">
+                    <span>Explore Full Menu</span>
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+                <button onclick="openOrderModal(event)" class="btn btn-secondary btn-hero-reserve">
+                    <span>Order for Pickup</span>
+                </button>
+            </div>
+
+            <!-- Key Metrics Stats Strip -->
+            <div class="hero-stats-strip">
+                <div class="stat-item">
+                    <span class="stat-number">50,000+</span>
+                    <span class="stat-label">Cups Served</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">2 Outlets</span>
+                    <span class="stat-label">Nadipur & Simalchaur</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">4.9 ★</span>
+                    <span class="stat-label">Google Rating</span>
+                </div>
             </div>
         </div>
 
@@ -51,29 +82,127 @@
 <section class="features-section">
     <div class="features-container">
         <div class="feature-item">
-            <div class="feature-icon">🍵</div>
-            <h3>Authentic Recipes</h3>
-            <p>Traditional spice blends brewed fresh every single hour.</p>
+            <div class="feature-icon-wrapper">
+                <span class="feature-icon">🍵</span>
+            </div>
+            <h3>Mumbai Tapri Heritage</h3>
+            <p>Traditional secret spice blends simmered fresh every single hour for that iconic robust kick.</p>
         </div>
         <div class="feature-item">
-            <div class="feature-icon">🌿</div>
+            <div class="feature-icon-wrapper">
+                <span class="feature-icon">🌿</span>
+            </div>
             <h3>100% Organic Leaves</h3>
-            <p>Sourced directly from premium tea gardens across the region.</p>
+            <p>Directly sourced CTC & orthodox tea leaves from high-altitude organic gardens.</p>
         </div>
         <div class="feature-item">
-            <div class="feature-icon">✨</div>
-            <h3>Cozy Ambiance</h3>
-            <p>The perfect corner for casual catch-ups, work, or relaxing.</p>
+            <div class="feature-icon-wrapper">
+                <span class="feature-icon">🥐</span>
+            </div>
+            <h3>Artisanal Daily Bakes</h3>
+            <p>Freshly baked muffins, croissants, danishes, and cinnamon rolls straight out of the oven.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon-wrapper">
+                <span class="feature-icon">✨</span>
+            </div>
+            <h3>Cozy Pokhara Ambience</h3>
+            <p>Warm ambient lighting, high-speed Wi-Fi, and plush seating for relaxing or catching up.</p>
+        </div>
+    </div>
+</section>
+
+<!-- BESTSELLERS & POPULAR DISHES HIGHLIGHT -->
+<section class="bestsellers-section">
+    <div class="bestsellers-container">
+        <div class="section-header text-center">
+            <span class="section-badge">Chef's Recommendations</span>
+            <h2 class="section-title">Our Crowd-Favorite Brews & Bites</h2>
+            <p class="section-subtitle">Discover the signature recipes that Pokhara tea lovers can't get enough of.</p>
+        </div>
+
+        <div class="bestsellers-grid">
+            <!-- Item 1 -->
+            <div class="bestseller-card">
+                <div class="card-badge-tag bestseller">⭐ Bestseller</div>
+                <div class="bestseller-content">
+                    <div class="item-meta">
+                        <span class="diet-tag veg">🟢 Veg</span>
+                        <span class="item-category">Signature Brew</span>
+                    </div>
+                    <h3 class="item-name">The Mumbai Cutting Chai</h3>
+                    <p class="item-desc">Strong, aromatic milk tea simmered with fresh crushed ginger and cardamom in a traditional copper vessel.</p>
+                    <div class="item-footer">
+                        <span class="item-price">NPR 35</span>
+                        <button class="btn-card-order" onclick="openOrderModal(event, 'Mumbai Cutting Chai')">Order for Pickup</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="bestseller-card">
+                <div class="card-badge-tag special">🔥 Royal Brew</div>
+                <div class="bestseller-content">
+                    <div class="item-meta">
+                        <span class="diet-tag veg">🟢 Veg</span>
+                        <span class="item-category">Earthen Pot</span>
+                    </div>
+                    <h3 class="item-name">Saffron Matka Tea</h3>
+                    <p class="item-desc">Infused with real Kashmiri saffron threads and ground green cardamom, served hot in eco-friendly clay matkas.</p>
+                    <div class="item-footer">
+                        <span class="item-price">NPR 80</span>
+                        <button class="btn-card-order" onclick="openOrderModal(event, 'Saffron Matka Tea')">Order for Pickup</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="bestseller-card">
+                <div class="card-badge-tag bestseller">⭐ Best Burger</div>
+                <div class="bestseller-content">
+                    <div class="item-meta">
+                        <span class="diet-tag nonveg">🔴 Non-Veg</span>
+                        <span class="item-category">Gourmet Burger</span>
+                    </div>
+                    <h3 class="item-name">The Cutting Chicken Burger</h3>
+                    <p class="item-desc">Crispy golden seasoned chicken patty layered with house spicy mayo, melted cheese slice & fresh veggies.</p>
+                    <div class="item-footer">
+                        <span class="item-price">NPR 169</span>
+                        <button class="btn-card-order" onclick="openOrderModal(event, 'The Cutting Chicken Burger')">Order for Pickup</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="bestseller-card">
+                <div class="card-badge-tag special">🥐 Baked Fresh</div>
+                <div class="bestseller-content">
+                    <div class="item-meta">
+                        <span class="diet-tag veg">🟢 Veg</span>
+                        <span class="item-category">Bakery Special</span>
+                    </div>
+                    <h3 class="item-name">Warm Cinnamon Roll</h3>
+                    <p class="item-desc">Flaky layered pastry swirled with aromatic Ceylon cinnamon sugar and topped with delicate vanilla glaze.</p>
+                    <div class="item-footer">
+                        <span class="item-price">NPR 80</span>
+                        <button class="btn-card-order" onclick="openOrderModal(event, 'Warm Cinnamon Roll')">Order for Pickup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center margin-top-lg">
+            <a href="{% url 'menu' %}" class="btn btn-secondary">View Full Menu (35+ Items) →</a>
         </div>
     </div>
 </section>
 
 <!-- COMMUNITY REVIEWS SECTION -->
 <section class="reviews-section" id="reviews">
-    <div class="section-header">
-        <span class="sub-heading">Testimonials</span>
-        <h2>What People Are Saying About <span>The Cutting Tea</span></h2>
-        <p>Don't just take our word for it—here is what our community loves about us.</p>
+    <div class="section-header text-center">
+        <span class="section-badge">Verified Testimonials</span>
+        <h2 class="section-title">What Pokhara Says About <span>The Cutting Tea</span></h2>
+        <p class="section-subtitle">Real experiences from tea enthusiasts, local guides, and food lovers.</p>
     </div>
 
     <div class="reviews-container">
@@ -84,13 +213,13 @@
                     <div class="review-avatar avatar-placeholder" aria-hidden="true">RS</div>
                     <div class="review-author-info">
                         <h3>Rahul Sharma</h3>
-                        <span class="review-badge">Local Guide • Google</span>
+                        <span class="review-badge">Local Guide • Google (Nadipur)</span>
                     </div>
                 </div>
                 <div class="review-rating" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</div>
             </div>
             <blockquote class="review-text">
-                "Best cutting chai in town! Reminds me of the authentic tapri taste. The hygiene is great and the staff is incredibly polite."
+                "Hands down the best cutting chai in town! Reminds me of authentic Mumbai street tea. Super clean, cozy atmosphere, and friendly staff!"
             </blockquote>
         </article>
 
@@ -101,13 +230,13 @@
                     <div class="review-avatar avatar-placeholder" aria-hidden="true">PK</div>
                     <div class="review-author-info">
                         <h3>Priya Kapoor</h3>
-                        <span class="review-badge">Google Reviewer</span>
+                        <span class="review-badge">Google Reviewer (Simalchaur)</span>
                     </div>
                 </div>
                 <div class="review-rating" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</div>
             </div>
             <blockquote class="review-text">
-                "The perfect blend of spices. Their ginger-elaichi cutting tea is an absolute mood lifter after a long day of work!"
+                "The ginger-elaichi cutting tea is an absolute mood lifter! Pair it with their hot chocolate doughnuts or chicken patties for bliss."
             </blockquote>
         </article>
 
@@ -118,15 +247,29 @@
                     <div class="review-avatar avatar-placeholder" aria-hidden="true">AR</div>
                     <div class="review-author-info">
                         <h3>Aasish Regmi</h3>
-                        <span class="review-badge">Google Reviewer</span>
+                        <span class="review-badge">Google Reviewer (Nadipur)</span>
                     </div>
                 </div>
-                <div class="review-rating" aria-label="4 out of 5 stars">⭐⭐⭐⭐☆</div>
+                <div class="review-rating" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</div>
             </div>
             <blockquote class="review-text">
-                "A nice and comfortable place to spend time in Pokhara! The tea and food were good, and the atmosphere is decent. Had a good overall time!"
+                "Wonderful place to relax and work in Pokhara! Great tea, fast Wi-Fi, delicious hash browns, and top-tier hospitality."
             </blockquote>
         </article>
+    </div>
+</section>
+
+<!-- CALL TO ACTION BANNER -->
+<section class="cta-banner-section">
+    <div class="cta-banner-container">
+        <div class="cta-banner-content">
+            <h2>Ready to Experience Pokhara's Favorite Brew?</h2>
+            <p>Visit our Nadipur Uptown Cafe or Simalchaur Downtown Restaurant today, or pre-book your table for groups!</p>
+        </div>
+        <div class="cta-banner-buttons">
+            <a href="{% url 'location' %}" class="btn btn-primary">Find Nearest Outlet</a>
+            <button onclick="openOrderModal(event)" class="btn btn-secondary">Order for Pickup</button>
+        </div>
     </div>
 </section>
 {% endblock %}

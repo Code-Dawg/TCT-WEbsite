@@ -1,71 +1,128 @@
 {% extends 'nav.html' %}
 {% load static %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/aboutus.css' %}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 {% endblock %}
-{% block content %}
-<div class="about-container">
 
-    <!-- Masthead / Hero -->
-    <header class="hero-section">
-        <p class="eyebrow">Our Story</p>
-        <h1>We're building the future</h1>
-        <div class="hero-rule"></div>
-        <p class="hero-sub">Driven by passion, dedicated to quality, and committed to delivering experiences that matter to you.</p>
+{% block content %}
+<div class="about-page">
+    
+    <!-- Hero / Masthead -->
+    <header class="about-hero">
+        <div class="about-hero-content">
+            <span class="section-badge">Our Journey & Craft</span>
+            <h1>From Mumbai Streets to Pokhara Hills</h1>
+            <div class="hero-rule"></div>
+            <p class="about-hero-sub">Driven by passion, dedicated to authentic spice brewing, and committed to crafting unforgettable tea & food moments in Pokhara.</p>
+        </div>
     </header>
 
-    <!-- Mission (pull-quote block) -->
-    <section class="mission-block">
-        <span class="mission-tag">Mission</span>
-        <p class="mission-statement">To empower people and businesses through innovative solutions, seamless design, and top-tier service tailored to modern needs.</p>
-    </section>
+    <div class="about-container">
+        <!-- Story / Origin Section -->
+        <section class="story-section">
+            <div class="story-grid">
+                <div class="story-text">
+                    <span class="sub-tag">The Origin Story</span>
+                    <h2>Brewing Authentic Heritage in Every Cup</h2>
+                    <p>Founded with a passion for bringing the iconic Mumbai tapri cutting chai culture to the beautiful city of Pokhara, <strong>The Cutting Tea</strong> started as a modest dream to serve hot, soul-warming tea made the traditional way.</p>
+                    <p>Every morning, our kitchen awakens to the aroma of freshly crushed ginger, green cardamom pods, cloves, and premium organic CTC leaves simmering in whole milk. From our first outlet in Nadipur to our second location in Simalchaur, we stay true to our roots while offering warm hospitality and artisanal baked treats.</p>
+                </div>
+                <div class="story-image-card">
+                    <img src="{% static 'image/download.jpeg' %}" alt="Brewing cutting chai in copper pot" class="story-img">
+                    <div class="story-badge">
+                        <span class="number">2+</span>
+                        <span class="label">Outlets in Pokhara</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Vision & Philosophy -->
-    <section class="pair-grid">
-        <div class="pair-card">
-            <span class="pair-tag">Vision</span>
-            <p>To create a connected community where technology meets simplicity, making everyday lives richer and more impactful.</p>
-        </div>
-        <div class="pair-card">
-            <span class="pair-tag">Philosophy</span>
-            <p>We believe great work comes from curiosity, continuous learning, and an unwavering commitment to put our users first.</p>
-        </div>
-    </section>
+        <!-- Mission & Vision Cards -->
+        <section class="mission-vision-grid">
+            <div class="mv-card">
+                <div class="mv-icon">🎯</div>
+                <h3>Our Mission</h3>
+                <p>To serve authentic, highest-quality handcrafted tea and freshly prepared comfort food in a clean, welcoming, and vibrant space that feels like home.</p>
+            </div>
+            <div class="mv-card">
+                <div class="mv-icon">👁️</div>
+                <h3>Our Vision</h3>
+                <p>To be Pokhara’s most beloved tea lounge and community hub—where every cup creates conversations, friendships, and memorable moments.</p>
+            </div>
+        </section>
 
-    <!-- Core Values -->
-    <div class="section-heading">
-        <h2 class="section-title">What Drives Us</h2>
-        <p class="section-subtitle">The principles that shape every decision we make</p>
+        <!-- Core Values Section -->
+        <div class="section-header text-center">
+            <span class="section-badge">Our Pillars</span>
+            <h2 class="section-title">The Principles Behind Every Brew</h2>
+            <p class="section-subtitle">What makes stepping into The Cutting Tea a special experience every day.</p>
+        </div>
+
+        <section class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">☕</div>
+                <h3>Artisanal Craftsmanship</h3>
+                <p>We brew fresh batches every single hour using authentic copper kettles, crushed spices, and 100% natural ingredients—no shortcuts.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🧼</div>
+                <h3>Uncompromising Hygiene</h3>
+                <p>From kitchen prep to clay matka serving, cleanliness and food safety are embedded in everything we do.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Community Warmth</h3>
+                <p>Our cafes are designed as cozy spaces for students, professionals, friends, and travelers to connect, work, or unwind.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🥐</div>
+                <h3>Flavor Innovation</h3>
+                <p>Complementing our traditional teas with freshly baked croissants, spicy burgers, and signature mountain snacks.</p>
+            </div>
+        </section>
+
+        <!-- Meet the Chai Masters -->
+        <section class="team-section">
+            <div class="section-header text-center">
+                <span class="section-badge">Behind The Scenes</span>
+                <h2 class="section-title">Meet Our Master Brew Team</h2>
+                <p class="section-subtitle">The passionate hands bringing you freshly crushed chai & morning bakes every day.</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="{% static 'image/images.jpeg' %}" alt="Master Brew Team Member">
+                    </div>
+                    <h3>Master Chai Brewer</h3>
+                    <span class="team-role">Head of Tea Craft</span>
+                    <p>"Chai is not just a drink; it's an emotion. Getting the spice balance and milk creaminess just right is our daily obsession."</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="{% static 'image/unnamed.jpg' %}" alt="Head Chef">
+                    </div>
+                    <h3>Head Bakery Chef</h3>
+                    <span class="team-role">Artisanal Bakes Lead</span>
+                    <p>"We wake up at 5:00 AM every morning so that our croissants, cinnamon rolls, and muffins come out piping hot for your morning chai."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="about-cta">
+            <div class="about-cta-content">
+                <h2>Want to Taste the Tradition Yourself?</h2>
+                <p>Visit our Nadipur Uptown Cafe or Simalchaur Downtown Restaurant in Pokhara today.</p>
+                <div class="cta-buttons">
+                    <a href="{% url 'menu' %}" class="btn btn-primary">Explore Our Menu</a>
+                    <button onclick="openOrderModal(event)" class="btn btn-secondary">Order for Pickup</button>
+                </div>
+            </div>
+        </section>
+
     </div>
-
-    <section class="values-grid">
-        <div class="value-card">
-            <span class="value-mark mark-circle" aria-hidden="true"></span>
-            <h3>Integrity</h3>
-            <p>Transparency and honesty are at the heart of everything we build and every relationship we nurture.</p>
-        </div>
-        <div class="value-card">
-            <span class="value-mark mark-triangle" aria-hidden="true"></span>
-            <h3>Innovation</h3>
-            <p>We don't just follow trends — we constantly explore new ideas to solve real problems effectively.</p>
-        </div>
-        <div class="value-card">
-            <span class="value-mark mark-square" aria-hidden="true"></span>
-            <h3>Excellence</h3>
-            <p>Quality isn't an act; it's a habit. We pay attention to the smallest details to deliver our absolute best.</p>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="cta-section">
-        <p class="cta-tag">Let's Talk</p>
-        <h2>Want to learn more or work with us?</h2>
-        <p class="cta-sub">We're always open to exciting ideas, partnerships, and collaborations.</p>
-        <a href="/contact" class="btn-primary">Get in touch <span class="btn-arrow">→</span></a>
-    </section>
-
 </div>
 {% endblock %}

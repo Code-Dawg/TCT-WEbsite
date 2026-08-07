@@ -1,0 +1,788 @@
+{% extends 'nav.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/menu.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="menu-page">
+    <!-- Cozy Menu Banner Header -->
+    <header class="menu-hero-header">
+        <div class="menu-hero-content">
+            <span class="cozy-badge">The Cutting Tea</span>
+            <h1>Menu</h1>
+            <p class="cozy-note">Chai, fresh bakes, and simple cafe favourites.</p>
+            
+            <!-- Live Search Bar -->
+            <div class="menu-search-wrapper">
+                <div class="search-box">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <input type="text" id="menuSearchInput" placeholder="Search tea, warm cinnamon rolls, burgers..." onkeyup="filterMenu()">
+                    <button class="clear-search-btn" id="clearSearchBtn" onclick="clearMenuSearch()">&times;</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sticky Filter Navigation Bar -->
+    <div class="sticky-filter-bar">
+        <div class="filter-bar-container">
+            <!-- Category Tabs -->
+            <div class="menu-tabs" id="menuTabs">
+                <button class="tab-btn active" data-category="all" onclick="selectCategory('all', this)">All</button>
+                <button class="tab-btn" data-category="Tea" onclick="selectCategory('Tea', this)">Tea</button>
+                <button class="tab-btn" data-category="Bakery" onclick="selectCategory('Bakery', this)">Bakery</button>
+                <button class="tab-btn" data-category="Drink" onclick="selectCategory('Drink', this)">Drinks</button>
+                <button class="tab-btn" data-category="Burger" onclick="selectCategory('Burger', this)">Burgers</button>
+                <button class="tab-btn" data-category="Chicken" onclick="selectCategory('Chicken', this)">Chicken</button>
+                <button class="tab-btn" data-category="BreakFast" onclick="selectCategory('BreakFast', this)">Breakfast</button>
+                <button class="tab-btn" data-category="Snack" onclick="selectCategory('Snack', this)">Snacks</button>
+            </div>
+
+            <!-- Quick Filter Chips -->
+            <div class="filter-chips">
+                <button class="chip-btn active" data-filter="all" onclick="applyDietFilter('all', this)">All Items</button>
+                <button class="chip-btn veg-chip" data-filter="veg" onclick="applyDietFilter('veg', this)">Vegetarian</button>
+                <button class="chip-btn nonveg-chip" data-filter="nonveg" onclick="applyDietFilter('nonveg', this)">Non-vegetarian</button>
+                <button class="chip-btn star-chip" data-filter="bestseller" onclick="applyDietFilter('bestseller', this)">Popular</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Menu Container -->
+    <div class="menu-container">
+        
+        <!-- ================= TEA SECTION ================= -->
+        <section id="Tea" class="menu-section" data-section="Tea">
+            <div class="section-title-wrap">
+                <h2>Chai & Teas</h2>
+                <span class="section-count">7 Brews</span>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-card bestseller" data-diet="veg" data-bestseller="true">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>The Mumbai Cutting Chai</h3>
+                            </div>
+                            <span class="price">NPR 35</span>
+                        </div>
+                        <p class="description">Strong, aromatic milk tea simmered with fresh crushed ginger and green cardamom in a copper kettle.</p>
+                        <div class="menu-card-actions">
+                            <span class="bestseller-badge">⭐ House Specialty</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'The Mumbai Cutting Chai')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Tea in a Kettle (4 / 8 Servings)</h3>
+                            </div>
+                            <span class="price">NPR 160/320</span>
+                        </div>
+                        <p class="description">Thermos kettle of steaming hot cardamom chai, perfect for group conversations & cozy sharing.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">👥 Group Sharing</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Tea in a Kettle')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card bestseller" data-diet="veg" data-bestseller="true">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Saffron Matka Tea</h3>
+                            </div>
+                            <span class="price">NPR 80</span>
+                        </div>
+                        <p class="description">Royal blend of Kashmiri saffron threads, cardamom & ground spices served in traditional earthen clay pots.</p>
+                        <div class="menu-card-actions">
+                            <span class="bestseller-badge">⭐ Royal Matka</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Saffron Matka Tea')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card bestseller" data-diet="veg" data-bestseller="true">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Nepali-Style Mountain Tea</h3>
+                            </div>
+                            <span class="price">NPR 60/70</span>
+                        </div>
+                        <p class="description">Rich mountain tea simmered with fresh crushed ginger, cloves, cinnamon, and whole cream milk.</p>
+                        <div class="menu-card-actions">
+                            <span class="bestseller-badge">⭐ Mountain Blend</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Nepali-Style Mountain Tea')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Sulemani Black Tea</h3>
+                            </div>
+                            <span class="price">NPR 40</span>
+                        </div>
+                        <p class="description">Clear spiced black tea infused with lemon zest, fresh mint leaves, and soothing secret herbs.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🌿 Digestive</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Sulemani Black Tea')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Regular CTC Black Tea</h3>
+                            </div>
+                            <span class="price">NPR 40</span>
+                        </div>
+                        <p class="description">Classic strong black brew prepared from organic CTC tea leaves.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">⚡ Strong Kick</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Regular CTC Black Tea')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Lemon Honey Ginger Tea</h3>
+                            </div>
+                            <span class="price">NPR 40</span>
+                        </div>
+                        <p class="description">Soothing herbal brew combining freshly crushed ginger root, pure organic honey, and lemon juice.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🍯 Honey Elixir</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Lemon Honey Ginger Tea')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= BAKERY SECTION ================= -->
+        <section id="Bakery" class="menu-section" data-section="Bakery">
+            <div class="section-title-wrap">
+                <h2>Fresh Bakes</h2>
+                <span class="section-count">7 Bakes</span>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Vanilla / Chocolate Muffin</h3>
+                            </div>
+                            <span class="price">NPR 130</span>
+                        </div>
+                        <p class="description">Soft, moist oven-baked muffin loaded with rich dark chocolate chunks or Madagascar vanilla.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🧁 Fresh Baked</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Vanilla / Chocolate Muffin')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card bestseller" data-diet="veg" data-bestseller="true">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Belgian Chocolate Doughnut</h3>
+                            </div>
+                            <span class="price">NPR 60/70</span>
+                        </div>
+                        <p class="description">Fluffy ring doughnut dipped in silky Belgian chocolate glaze.</p>
+                        <div class="menu-card-actions">
+                            <span class="bestseller-badge">⭐ Sweet Favorite</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Belgian Chocolate Doughnut')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="nonveg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag nonveg">🔴 Chicken / 🟢 Veg</span>
+                                <h3>Crispy Flaky Patties</h3>
+                            </div>
+                            <span class="price">NPR 110/80</span>
+                        </div>
+                        <p class="description">Golden puff pastry stuffed with minced spiced chicken or savory potato peas filling.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🥐 Flaky Layers</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Crispy Flaky Patties')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Plain / Cheese Butter Croissant</h3>
+                            </div>
+                            <span class="price">NPR 80/140</span>
+                        </div>
+                        <p class="description">Classic French buttery croissant baked crisp outside and soft inside with melted cheddar option.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🧀 French Butter</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Plain / Cheese Butter Croissant')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card bestseller" data-diet="veg" data-bestseller="true">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Warm Cinnamon Roll</h3>
+                            </div>
+                            <span class="price">NPR 80</span>
+                        </div>
+                        <p class="description">Soft cinnamon sugar roll swirled with aromatic Ceylon cinnamon and vanilla glaze.</p>
+                        <div class="menu-card-actions">
+                            <span class="bestseller-badge">⭐ Bakery Star</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Warm Cinnamon Roll')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Chocolate / Almond Danish</h3>
+                            </div>
+                            <span class="price">NPR 140</span>
+                        </div>
+                        <p class="description">Flaky Danish pastry filled with sweet almond frangipane or dark chocolate.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🌰 Almond Cream</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Chocolate / Almond Danish')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Chocolate / Cherry Croissant</h3>
+                            </div>
+                            <span class="price">NPR 140</span>
+                        </div>
+                        <p class="description">Indulgent croissant stuffed with dark chocolate filling or tart wild cherry compote.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🍒 Wild Cherry</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Chocolate / Cherry Croissant')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= DRINKS SECTION ================= -->
+        <section id="Drink" class="menu-section" data-section="Drink">
+            <div class="section-title-wrap">
+                <h2>Refreshers</h2>
+                <span class="section-count">5 Drinks</span>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-card bestseller" data-diet="veg" data-bestseller="true">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Masala Shikanji</h3>
+                            </div>
+                            <span class="price">NPR 130</span>
+                        </div>
+                        <p class="description">Zesty spiced lemonade spiked with roasted cumin powder, black salt, and fresh mint leaves.</p>
+                        <div class="menu-card-actions">
+                            <span class="bestseller-badge">⭐ Refreshing Cooler</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Masala Shikanji')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Fresh Lemonade</h3>
+                            </div>
+                            <span class="price">NPR 130</span>
+                        </div>
+                        <p class="description">Chilled citrus beverage sweetened to perfection and garnished with fresh mint.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🍋 Citrus Sip</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Fresh Lemonade')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Virgin Mojito</h3>
+                            </div>
+                            <span class="price">NPR 200</span>
+                        </div>
+                        <p class="description">Muddled fresh spearmint leaves, lime juice, cane sugar, topped with club soda.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🌿 Fresh Spearmint</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Virgin Mojito')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Plain / Banana Sweet Lassi</h3>
+                            </div>
+                            <span class="price">NPR 160/190</span>
+                        </div>
+                        <p class="description">Thick, traditional churned yogurt drink blended smoothly with ripe bananas & cardamom.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🍌 Creamy Lassi</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Plain / Banana Sweet Lassi')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Chilled Cold Drinks</h3>
+                            </div>
+                            <span class="price">NPR 60</span>
+                        </div>
+                        <p class="description">Selection of chilled canned sodas and sparkling mineral water.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🥤 Chilled Cans</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Chilled Cold Drinks')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= BURGERS SECTION ================= -->
+        <section id="Burger" class="menu-section" data-section="Burger">
+            <div class="section-title-wrap">
+                <h2>Burgers</h2>
+                <span class="section-count">3 Burgers</span>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-card bestseller" data-diet="nonveg" data-bestseller="true">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag nonveg">🔴 Non-Veg</span>
+                                <h3>The Cutting Chicken Burger</h3>
+                            </div>
+                            <span class="price">NPR 169</span>
+                        </div>
+                        <p class="description">Crispy fried chicken patty, melted cheddar cheese, pickles & spicy sauce on toasted brioche bun.</p>
+                        <div class="menu-card-actions">
+                            <span class="bestseller-badge">⭐ House Favorite</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'The Cutting Chicken Burger')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card bestseller" data-diet="veg" data-bestseller="true">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>The Cutting Veg Burger</h3>
+                            </div>
+                            <span class="price">NPR 169</span>
+                        </div>
+                        <p class="description">Crispy seasoned potato-corn patty layered with cheddar cheese, crunchy lettuce & herb mayonnaise.</p>
+                        <div class="menu-card-actions">
+                            <span class="bestseller-badge">⭐ Veg Delight</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'The Cutting Veg Burger')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="nonveg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag nonveg">🔴 / 🟢</span>
+                                <h3>The Grand Burger Combo</h3>
+                            </div>
+                            <span class="price">NPR 299</span>
+                        </div>
+                        <p class="description">Choice of Cutting Burger served with triple-fried potato wedges, garlic dip, and cold drink or chai.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🍟 Value Combo</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'The Grand Burger Combo')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CHICKEN SECTION ================= -->
+        <section id="Chicken" class="menu-section" data-section="Chicken">
+            <div class="section-title-wrap">
+                <h2>Chicken</h2>
+                <span class="section-count">4 Dishes</span>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-card" data-diet="nonveg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag nonveg">🔴 Non-Veg</span>
+                                <h3>Crispy Chicken Boneless (3 pcs)</h3>
+                            </div>
+                            <span class="price">NPR 299</span>
+                        </div>
+                        <p class="description">Tender boneless chicken strips marinated in secret spices and fried golden crisp.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🔥 Crispy Strips</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Crispy Chicken Boneless')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="nonveg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag nonveg">🔴 Non-Veg 🌶️</span>
+                                <h3>Spicy Chicken Wings (4 pcs)</h3>
+                            </div>
+                            <span class="price">NPR 299</span>
+                        </div>
+                        <p class="description">Juicy chicken wings tossed in hot garlic chilli sauce or southern spice rub.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🌶️ Spicy Glaze</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Spicy Chicken Wings')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="nonveg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag nonveg">🔴 Non-Veg</span>
+                                <h3>Golden Chicken Drumsticks (2 pcs)</h3>
+                            </div>
+                            <span class="price">NPR 299</span>
+                        </div>
+                        <p class="description">Crispy drumsticks cooked crunchy on the outside, succulent on the inside.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🍗 Drumstick Delight</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Golden Chicken Drumsticks')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="nonveg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag nonveg">🔴 Non-Veg</span>
+                                <h3>The Combo Chicken Platter</h3>
+                            </div>
+                            <span class="price">NPR 299</span>
+                        </div>
+                        <p class="description">Combination of chicken drumsticks, wings, potato wedges, and dipping sauces.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🍱 Feast Platter</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'The Combo Chicken Platter')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= BREAKFAST SECTION ================= -->
+        <section id="BreakFast" class="menu-section" data-section="BreakFast">
+            <div class="section-title-wrap">
+                <h2>Breakfast</h2>
+                <span class="section-count">4 Meals</span>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Butter / Garlic Toast</h3>
+                            </div>
+                            <span class="price">NPR 99</span>
+                        </div>
+                        <p class="description">Thick sliced artisan bread toasted golden with salted butter or herb garlic spread.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🍞 Golden Toast</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Butter / Garlic Toast')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="nonveg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag nonveg">🔴 Non-Veg</span>
+                                <h3>Eggs Your Way (2 eggs)</h3>
+                            </div>
+                            <span class="price">NPR 129</span>
+                        </div>
+                        <p class="description">Two eggs cooked as scrambled, cheese omelette, or sunny-side up with grilled tomatoes & toast.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🍳 Fresh Eggs</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Eggs Your Way')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card bestseller" data-diet="veg" data-bestseller="true">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Classic Indori Poha</h3>
+                            </div>
+                            <span class="price">NPR 129</span>
+                        </div>
+                        <p class="description">Flattened rice tempered with mustard seeds, curry leaves, peanuts, lemon & crisp Sev.</p>
+                        <div class="menu-card-actions">
+                            <span class="bestseller-badge">⭐ Indori Special</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Classic Indori Poha')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="nonveg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag nonveg">🔴 / 🟢</span>
+                                <h3>The Full Cutting Breakfast</h3>
+                            </div>
+                            <span class="price">NPR 199</span>
+                        </div>
+                        <p class="description">Hearty breakfast platter featuring eggs, hash browns, chicken sausage/paneer, toast & hot chai.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">👑 Full Feast</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'The Full Cutting Breakfast')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SNACKS SECTION ================= -->
+        <section id="Snack" class="menu-section" data-section="Snack">
+            <div class="section-title-wrap">
+                <h2>Snacks</h2>
+                <span class="section-count">9 Bites</span>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Crispy Aaloo Sticks</h3>
+                            </div>
+                            <span class="price">NPR 69</span>
+                        </div>
+                        <p class="description">Golden fried potato sticks tossed with tangy spicy seasoning.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🍟 Crispy Fries</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Crispy Aaloo Sticks')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="nonveg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag nonveg">🔴 Non-Veg</span>
+                                <h3>Grilled Chicken Sausage</h3>
+                            </div>
+                            <span class="price">NPR 69</span>
+                        </div>
+                        <p class="description">Juicy grilled chicken sausages served with mustard and chili dip.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🌭 Sausage Dip</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Grilled Chicken Sausage')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Cutting Hash Browns (2 pcs)</h3>
+                            </div>
+                            <span class="price">NPR 129</span>
+                        </div>
+                        <p class="description">Crispy shredded potato hash brown patties fried golden brown.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🥔 Golden Hash</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Cutting Hash Browns')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card bestseller" data-diet="veg" data-bestseller="true">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg / 🔴 Non-Veg</span>
+                                <h3>Crispy Veg / Chicken Bites</h3>
+                            </div>
+                            <span class="price">NPR 149</span>
+                        </div>
+                        <p class="description">Panko-crusted spiced vegetable or minced chicken bite-sized crunchies.</p>
+                        <div class="menu-card-actions">
+                            <span class="bestseller-badge">⭐ Crunchy Favorite</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Crispy Veg / Chicken Bites')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="veg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Vegetable Pakoda Platter</h3>
+                            </div>
+                            <span class="price">NPR 169</span>
+                        </div>
+                        <p class="description">Crispy gram-flour fritters with onion slices, herbs, and green chili mint chutney.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🍵 Tea Partner</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Vegetable Pakoda Platter')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card bestseller" data-diet="veg" data-bestseller="true">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg</span>
+                                <h3>Triple-Fried Gourmet Chips</h3>
+                            </div>
+                            <span class="price">NPR 169</span>
+                        </div>
+                        <p class="description">Thick hand-cut potato wedges fried three times for extraordinary crunch.</p>
+                        <div class="menu-card-actions">
+                            <span class="bestseller-badge">⭐ Super Crisp</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Triple-Fried Gourmet Chips')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="nonveg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag nonveg">🔴 Non-Veg 🌶️</span>
+                                <h3>Spicy Chicken Chatpat</h3>
+                            </div>
+                            <span class="price">NPR 149</span>
+                        </div>
+                        <p class="description">Nepali style spicy shredded chicken mixed with puffed rice, lemon, and onions.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🌶️ Tangy Spicy</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Spicy Chicken Chatpat')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-diet="nonveg" data-bestseller="false">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag nonveg">🔴 Non-Veg 🌶️</span>
+                                <h3>Traditional Chicken Sadheko</h3>
+                            </div>
+                            <span class="price">NPR 199</span>
+                        </div>
+                        <p class="description">Marinated chicken tossed with raw mustard oil, fresh coriander, garlic, and local spices.</p>
+                        <div class="menu-card-actions">
+                            <span class="tag-info">🌶️ Local Spice</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Traditional Chicken Sadheko')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card bestseller" data-diet="veg" data-bestseller="true">
+                    <div class="menu-card-details">
+                        <div class="menu-item-header">
+                            <div>
+                                <span class="diet-tag veg">🟢 Veg / 🔴 Non-Veg</span>
+                                <h3>Grilled Veg / Chicken Sandwich</h3>
+                            </div>
+                            <span class="price">NPR 199</span>
+                        </div>
+                        <p class="description">Triple-decker toasted sandwich packed with spiced paneer or chicken, cheese, and fresh veggies.</p>
+                        <div class="menu-card-actions">
+                            <span class="bestseller-badge">⭐ Sandwich Special</span>
+                            <button class="btn-order-item" onclick="openReservationModal(event, 'Grilled Veg / Chicken Sandwich')">Order / Reserve</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/menu.js' %}" defer></script>
+{% endblock %}
