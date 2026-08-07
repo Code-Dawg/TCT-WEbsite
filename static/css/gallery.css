@@ -1,8 +1,9 @@
 .gallery-hero {
     background: var(--warm-chai-dark);
     color: var(--cream-warm);
-    padding: 78px 24px;
+    padding: 70px 24px;
     text-align: center;
+    border-bottom: 1px solid #1F2C1B;
 }
 
 .gallery-content {
@@ -13,19 +14,21 @@
 .gallery-label {
     color: var(--amber-gold);
     font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
+    font-weight: 600;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
 }
 
 .gallery-hero h1 {
     font-family: var(--font-heading);
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 600;
     margin: 10px 0;
 }
 
 .gallery-hero p:not(.gallery-label) {
     color: rgba(255, 248, 240, 0.82);
+    font-size: 1.05rem;
 }
 
 .gallery-section {
@@ -40,32 +43,45 @@
     gap: 36px;
     align-items: start;
     margin-bottom: 46px;
-    padding: 30px;
+    padding: 32px;
     background: var(--parchment-card);
-    border: 1px solid rgba(44, 26, 20, 0.12);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--card-shadow);
 }
 
 .gallery-upload h2 {
     font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--warm-chai-dark);
     margin: 5px 0 8px;
 }
 
 .gallery-upload-form {
     display: grid;
-    gap: 9px;
+    gap: 12px;
 }
 
 .gallery-upload-form label {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 0.88rem;
+    font-weight: 600;
 }
 
 .gallery-upload-form input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid rgba(44, 26, 20, 0.25);
+    padding: 10px 14px;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
     font: inherit;
+    background: var(--parchment-card);
+    color: var(--text-primary);
+}
+
+.gallery-upload-form input:focus {
+    outline: none;
+    border-color: var(--warm-chai-dark);
 }
 
 .gallery-upload-form .btn {
@@ -74,14 +90,14 @@
 }
 
 .form-errors {
-    color: #a12d22;
-    font-size: 0.9rem;
+    color: var(--status-red);
+    font-size: 0.88rem;
 }
 
 .gallery-message {
     margin: -24px 0 28px;
     color: var(--status-green);
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .gallery-grid {
@@ -92,8 +108,10 @@
 
 .gallery-photo {
     background: var(--parchment-card);
-    border: 1px solid rgba(44, 26, 20, 0.12);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
     overflow: hidden;
+    box-shadow: var(--card-shadow);
 }
 
 .gallery-photo img {
@@ -109,8 +127,10 @@
 
 .gallery-photo figcaption {
     font-family: var(--font-heading);
-    padding: 15px 18px;
-    font-size: 1.05rem;
+    padding: 14px 18px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--warm-chai-dark);
 }
 
 .gallery-note {
@@ -120,7 +140,7 @@
 }
 
 .gallery-note code {
-    color: var(--coffee-medium);
+    color: var(--warm-chai-dark);
 }
 
 @media (max-width: 760px) {

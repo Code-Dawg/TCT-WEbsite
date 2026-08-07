@@ -54,10 +54,10 @@
 }
 
 .dot.active {
-    background: #ffffff;
+    background: #FAF6EE;
     transform: scale(1.2);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 8px rgba(250, 246, 238, 0.6);
 }
 .main{
-    background-color: #faf8f5;
+    background-color: var(--cream-warm);
 }

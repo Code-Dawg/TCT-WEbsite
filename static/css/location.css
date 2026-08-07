@@ -1,5 +1,5 @@
 /* ==========================================
-   COZY & WARM LOCATION PAGE STYLES
+   CLASSIC NEUTRAL LOCATION PAGE STYLES
    ========================================== */
 .locations-page {
     background: var(--cream-warm);
@@ -7,11 +7,11 @@
 }
 
 .locations-hero {
-    background: linear-gradient(180deg, var(--warm-chai-dark) 0%, var(--coffee-medium) 100%);
+    background: var(--warm-chai-dark);
     color: var(--cream-warm);
     padding: 70px 24px 80px;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 248, 240, 0.24);
+    border-bottom: 1px solid #1F2C1B;
 }
 
 .locations-hero-content {
@@ -21,14 +21,14 @@
 
 .locations-hero-content h1 {
     font-family: var(--font-heading);
-    font-size: 3.3rem;
-    font-weight: 800;
+    font-size: 3rem;
+    font-weight: 600;
     margin: 10px 0 16px;
 }
 
 .locations-hero-content p {
-    font-size: 1.1rem;
-    color: rgba(255, 248, 240, 0.88);
+    font-size: 1.05rem;
+    color: rgba(255, 248, 240, 0.82);
 }
 
 .locations-container {
@@ -47,7 +47,7 @@
 
 .location-card {
     background: var(--parchment-card);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--card-shadow);
     border: 1px solid var(--glass-border);
@@ -57,8 +57,8 @@
 }
 
 .location-card:hover {
+    border-color: var(--text-primary);
     box-shadow: var(--card-shadow-hover);
-    border-color: var(--terracotta-warm);
 }
 
 .location-info {
@@ -76,33 +76,35 @@
 }
 
 .branch-tag {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--terracotta-warm);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--amber-gold);
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.1em;
 }
 
 .live-status-badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(46, 125, 50, 0.12);
+    background: #F0F7F2;
     padding: 4px 12px;
     border-radius: var(--radius-full);
     font-size: 0.78rem;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--status-green);
+    border: 1px solid rgba(43, 89, 56, 0.2);
 }
 
 .location-info h2 {
     font-family: var(--font-heading);
-    font-size: 2.3rem;
+    font-size: 2.1rem;
+    font-weight: 600;
     color: var(--warm-chai-dark);
 }
 
 .branch-name {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
     margin-bottom: 24px;
 }
@@ -117,7 +119,7 @@
 .detail-row {
     display: flex;
     gap: 16px;
-    font-size: 0.96rem;
+    font-size: 0.94rem;
 }
 
 .detail-row dt {
@@ -132,9 +134,9 @@
 }
 
 .detail-row dd a {
-    color: var(--terracotta-warm);
-    text-decoration: none;
-    font-weight: 600;
+    color: var(--warm-chai-dark);
+    text-decoration: underline;
+    font-weight: 500;
 }
 
 /* Amenities Chips */
@@ -146,13 +148,13 @@
 }
 
 .amenity-chip {
-    background: rgba(200, 90, 50, 0.1);
-    color: var(--warm-chai-dark);
-    font-size: 0.825rem;
-    font-weight: 600;
-    padding: 4px 14px;
-    border-radius: var(--radius-full);
-    border: 1px solid rgba(200, 90, 50, 0.2);
+    background: #FAF8F5;
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid #E5E0D8;
 }
 
 .location-card-actions {
@@ -169,14 +171,14 @@
 .map-container {
     width: 100%;
     min-height: 380px;
-    background: #E5E3DF;
+    background: #F4F0EA;
 }
 
 /* Contact & Inquiry Section */
 .contact-inquiry-section {
     background: var(--parchment-card);
-    border-radius: var(--radius-lg);
-    padding: 50px;
+    border-radius: var(--radius-md);
+    padding: 48px;
     box-shadow: var(--card-shadow);
     border: 1px solid var(--glass-border);
 }
@@ -189,13 +191,14 @@
 
 .contact-info-panel h2 {
     font-family: var(--font-heading);
-    font-size: 2.1rem;
+    font-size: 2rem;
+    font-weight: 600;
     color: var(--warm-chai-dark);
     margin: 8px 0 16px;
 }
 
 .contact-info-panel p {
-    font-size: 0.98rem;
+    font-size: 0.96rem;
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 28px;
@@ -214,11 +217,12 @@
 }
 
 .c-icon {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 .c-item h4 {
-    font-size: 1.05rem;
+    font-size: 1rem;
+    font-weight: 600;
     color: var(--warm-chai-dark);
 }
 
@@ -229,20 +233,22 @@
 }
 
 .c-item a {
-    color: var(--terracotta-warm);
-    font-weight: 600;
+    color: var(--warm-chai-dark);
+    text-decoration: underline;
+    font-weight: 500;
 }
 
 .contact-form-panel {
-    background: var(--cream-warm);
-    padding: 30px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--glass-border);
+    background: #FAF8F5;
+    padding: 28px;
+    border-radius: var(--radius-sm);
+    border: 1px solid #E5E0D8;
 }
 
 .contact-form-panel h3 {
     font-family: var(--font-heading);
-    font-size: 1.45rem;
+    font-size: 1.4rem;
+    font-weight: 600;
     color: var(--warm-chai-dark);
     margin-bottom: 20px;
 }
@@ -260,7 +266,7 @@
 }
 
 @media (max-width: 768px) {
-    .locations-hero-content h1 { font-size: 2.3rem; }
+    .locations-hero-content h1 { font-size: 2.2rem; }
     .location-info { padding: 24px; }
     .contact-inquiry-section { padding: 24px; }
 }
