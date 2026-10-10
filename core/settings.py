@@ -4,7 +4,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # Permit your live domains and local testing
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'thecuttingtea.com', 'www.thecuttingtea.com', '.onrender.com', '*']
