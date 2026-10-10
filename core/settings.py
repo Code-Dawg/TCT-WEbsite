@@ -134,3 +134,16 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Option C: Allow all hosts (for temporary local testing only)
 ALLOWED_HOSTS = ['*']
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # <-- Add this line!
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    # ... rest of your middleware
+]
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
