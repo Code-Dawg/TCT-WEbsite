@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}The Cutting Tea | Artisanal Chai & Cafe in Pokhara{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>{% block title %}The Cutting Tea | Best Tea in Town{% endblock %}</title>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Welcome to The Cutting Tea Cafe in Pokhara. Taste authentic Mumbai tapri chai, saffron matka tea, artisanal morning bakes, gourmet burgers, and fresh snacks across Nadipur and Simalchaur outlets.">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="logo-text-group">
                     <span class="logo-title">The Cutting Tea</span>
-                    <span class="logo-tagline">ARTISANAL CHAI & BITES</span>
+                    <span class="logo-tagline">Best Tea In Town</span>
                 </div>
             </a>
             
@@ -36,7 +36,6 @@
             <ul class="nav-links">
                 <li><a href="{% url 'display' %}" class="{% if request.resolver_match.url_name == 'display' %}active{% endif %}">Home</a></li>
                 <li><a href="{% url 'menu' %}" class="{% if request.resolver_match.url_name == 'menu' %}active{% endif %}">Menu</a></li>
-                <li><a href="{% url 'gallery' %}" class="{% if request.resolver_match.url_name == 'gallery' %}active{% endif %}">Gallery</a></li>
                 <li><a href="{% url 'aboutus' %}" class="{% if request.resolver_match.url_name == 'aboutus' %}active{% endif %}">About Us</a></li>
                 <li><a href="{% url 'location' %}" class="{% if request.resolver_match.url_name == 'location' %}active{% endif %}">Outlets & Map</a></li>
                 <li>
@@ -67,7 +66,6 @@
             <ul class="mobile-nav-links">
                 <li><a href="{% url 'display' %}" onclick="toggleMobileNav()">Home</a></li>
                 <li><a href="{% url 'menu' %}" onclick="toggleMobileNav()">Full Menu</a></li>
-                <li><a href="{% url 'gallery' %}" onclick="toggleMobileNav()">Gallery</a></li>
                 <li><a href="{% url 'aboutus' %}" onclick="toggleMobileNav()">About Us</a></li>
                 <li><a href="{% url 'location' %}" onclick="toggleMobileNav()">Outlets & Map</a></li>
             </ul>

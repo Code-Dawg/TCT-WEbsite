@@ -6,35 +6,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
 
 :root {
-    /* Olive Green & Rich Cream Palette */
-    --warm-chai-dark: #273822;    /* Deep rich olive green */
-    --coffee-medium: #354A30;     /* Dark olive green */
-    --terracotta-warm: #3A4F34;   /* Olive green accent */
-    --terracotta-glow: rgba(45, 61, 39, 0.06);
-    --terracotta-hover: #1F2C1B;  /* Deep dark olive hover */
-    --amber-gold: #5C734B;        /* Elegant olive gold accent */
-    --amber-glow: rgba(92, 115, 75, 0.15);
-    --cinnamon-spice: #455839;
-    --cream-warm: #F7F4EB;        /* Soft rich natural cream background */
-    --parchment-card: #FAF7F0;     /* Soft warm cream card background */
-    --parchment-hover: #F2EEE3;    /* Soft warm cream card hover */
-    --wood-teak: #23301F;
-    --status-green: #3A4F34;      /* Deep olive green */
-    --status-red: #8C2D2D;        /* Subtle classic burgundy */
+    /* Fresh White & Emerald Green Design System */
+    --warm-chai-dark: #133E20;    /* Deep forest emerald green */
+    --coffee-medium: #1E6B37;     /* Vibrant primary green */
+    --terracotta-warm: #2E7D32;   /* Fresh leaf green accent */
+    --terracotta-glow: rgba(46, 125, 50, 0.08);
+    --terracotta-hover: #16532B;  /* Darker emerald green hover */
+    --amber-gold: #2E7D32;        /* Bright emerald accent */
+    --amber-glow: rgba(46, 125, 50, 0.15);
+    --cinnamon-spice: #1E6B37;
+    --cream-warm: #FFFFFF;        /* Pure crisp white background */
+    --parchment-card: #F7FAF7;     /* Soft fresh white card background */
+    --parchment-hover: #EEF5EF;    /* Soft fresh green tint hover */
+    --wood-teak: #133E20;
+    --status-green: #2E7D32;      /* Deep green */
+    --status-red: #C62828;        /* Crimson red */
     
-    /* Text Colors (Olive Green & Cream System) */
-    --text-primary: #2D3D27;      /* Deep rich olive green for primary text & headings */
-    --text-secondary: #4C6142;    /* Medium olive green for subtext */
-    --text-muted: #738767;        /* Soft muted olive green */
-    --text-light: #FAF6EE;        /* Soft warm cream light text */
+    /* Text Colors (Dark Forest Green & Crisp White System) */
+    --text-primary: #122416;      /* High contrast dark forest green text */
+    --text-secondary: #334E39;    /* Medium forest green subtext */
+    --text-muted: #5C7A63;        /* Soft sage green */
+    --text-light: #FFFFFF;        /* Crisp white text */
 
     /* Shadows & Glass */
-    --glass-bg: rgba(247, 244, 235, 0.96);
-    --glass-border: #E5E0D5;
-    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    --card-shadow-hover: 0 8px 28px rgba(0, 0, 0, 0.07);
-    --modal-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
-    --glow-shadow: 0 0 15px rgba(0, 0, 0, 0.04);
+    --glass-bg: rgba(255, 255, 255, 0.96);
+    --glass-border: #E1EBE2;
+    --card-shadow: 0 4px 20px rgba(19, 62, 32, 0.04);
+    --card-shadow-hover: 0 8px 28px rgba(19, 62, 32, 0.08);
+    --modal-shadow: 0 20px 60px rgba(19, 62, 32, 0.22);
+    --glow-shadow: 0 0 15px rgba(46, 125, 50, 0.08);
 
     /* Fonts */
     --font-heading: 'Playfair Display', 'Lora', Georgia, serif;
@@ -730,6 +730,18 @@ body {
     margin-bottom: 20px;
 }
 
+.footer-connect-group {
+    margin-top: 14px;
+}
+
+.connect-col-title {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    color: var(--cream-warm);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
 .social-links { display: flex; gap: 12px; }
 
 .social-btn {
@@ -897,16 +909,138 @@ body {
     transform: translateY(-2px);
 }
 
-/* Responsive Rules */
+/* Responsive & Mobile Optimization Rules */
 @media (max-width: 992px) {
-    .footer-container { grid-template-columns: 1fr 1fr; }
+    .footer-container { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
 
 @media (max-width: 768px) {
+    html {
+        -webkit-text-size-adjust: 100%;
+    }
+
+    /* Prevent iOS Safari auto-zoom on input focus */
+    input[type="text"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="date"],
+    input[type="time"],
+    input[type="password"],
+    select,
+    textarea,
+    .form-control {
+        font-size: 16px !important;
+    }
+
     .top-bar-contact { display: none; }
     .nav-links { display: none; }
-    .mobile-nav-toggle { display: flex; }
-    .footer-container { grid-template-columns: 1fr; gap: 30px; }
-    .form-row { grid-template-columns: 1fr; }
+
+    /* Compact Mobile Header */
+    .navbar {
+        padding: 8px 16px;
+        min-height: 64px;
+    }
+
+    .logo-img-wrapper {
+        width: 38px;
+        height: 38px;
+    }
+
+    .logo-title {
+        font-size: 1.15rem;
+    }
+
+    .logo-tagline {
+        font-size: 0.7rem;
+    }
+
+    /* Mobile Hamburger Touch Target */
+    .mobile-nav-toggle {
+        display: flex;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border-radius: 8px;
+        background: rgba(19, 62, 32, 0.05);
+    }
+
+    .mobile-nav-toggle .bar {
+        width: 22px;
+    }
+
+    /* Mobile Side Drawer */
+    .mobile-nav-drawer {
+        width: min(85vw, 320px);
+        right: -340px;
+        z-index: 3000;
+        padding: max(20px, env(safe-area-inset-top, 20px)) 20px 24px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+    .mobile-nav-overlay {
+        z-index: 2999;
+        backdrop-filter: blur(4px);
+    }
+
+    .mobile-nav-links {
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .mobile-nav-links a {
+        padding: 12px 16px;
+        background: #F4FAF5;
+        border: 1px solid #E1EBE2;
+        border-radius: 12px;
+        display: block;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #122416;
+
+    }
+
+    .mobile-nav-links a:active {
+        background: #E8F5E9;
+    }
+
+    /* Modals for Mobile */
+    .modal-backdrop {
+        padding: 12px;
+        align-items: flex-end;
+    }
+
+    .modal-card {
+        padding: 24px 18px;
+        max-height: 86vh;
+        border-radius: 20px 20px 16px 16px;
+    }
+
+    .modal-header h3 {
+        font-size: 1.55rem;
+    }
+
+    .form-row { grid-template-columns: 1fr; gap: 12px; }
+
+    .footer-container { grid-template-columns: 1fr; gap: 28px; padding-bottom: 36px; }
     .footer-bottom-container { flex-direction: column; gap: 10px; text-align: center; }
+
+    .toast-container {
+        left: 16px;
+        right: 16px;
+        bottom: 20px;
+    }
+    .toast {
+        max-width: 100%;
+    }
 }
+
+@media (max-width: 440px) {
+    .logo-tagline {
+        display: none;
+    }
+}
+

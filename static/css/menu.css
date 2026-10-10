@@ -1,88 +1,47 @@
-/* ==========================================
-   CLASSIC NEUTRAL MENU PAGE STYLES
-   ========================================== */
+/* ==========================================================================
+   THE CUTTING TEA - SIMPLE & ELEGANT MINIMALIST MENU STYLESHEET
+   ========================================================================== */
+
 .menu-page {
-    background: var(--cream-warm);
-    padding-bottom: 80px;
+    background: #FFFFFF;
+    padding-bottom: 90px;
 }
 
-/* Classic Header Banner */
+/* Header */
 .menu-hero-header {
-    background: var(--warm-chai-dark);
-    color: var(--cream-warm);
-    padding: 60px 24px 64px;
+    background: #FFFFFF;
+    padding: 56px 24px 36px;
     text-align: center;
-    border-bottom: 1px solid #1F2C1B;
+    border-bottom: 1px solid #E1EBE2;
 }
 
 .menu-hero-content {
-    max-width: 800px;
+    max-width: 520px;
     margin: 0 auto;
+}
+
+.cozy-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #1E6B37;
+    margin-bottom: 8px;
 }
 
 .menu-hero-content h1 {
-    font-family: var(--font-heading);
-    font-size: 3rem;
-    font-weight: 600;
-    margin: 8px 0;
-    color: var(--cream-warm);
+    font-family: var(--font-heading, Georgia, serif);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #122416;
+    margin: 0 0 6px;
 }
 
 .cozy-note {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.05rem;
-    color: rgba(255, 248, 240, 0.75);
-    margin-bottom: 28px;
-}
-
-/* Live Search Box */
-.menu-search-wrapper {
-    max-width: 540px;
-    margin: 0 auto;
-}
-
-.search-box {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background: var(--parchment-card);
-    border-radius: var(--radius-sm);
-    padding: 4px 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-    border: 1px solid var(--glass-border);
-}
-
-.search-box svg {
-    color: var(--text-secondary);
-    flex-shrink: 0;
-}
-
-.search-box input {
-    width: 100%;
-    border: none;
-    background: transparent;
-    padding: 10px 12px;
-    font-family: inherit;
-    font-size: 0.95rem;
-    color: var(--text-primary);
-}
-
-.search-box input:focus {
-    outline: none;
-}
-
-.clear-search-btn {
-    background: none;
-    border: none;
-    font-size: 1.4rem;
-    color: var(--text-muted);
-    cursor: pointer;
-    display: none;
-}
-
-.clear-search-btn.visible {
-    display: block;
+    font-size: 0.98rem;
+    color: #334E39;
+    margin-bottom: 24px;
 }
 
 /* Sticky Filter Bar */
@@ -90,250 +49,170 @@
     position: sticky;
     top: 84px;
     z-index: 900;
-    background: var(--glass-bg);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--glass-border);
-    padding: 14px 24px;
-}
-
-.filter-bar-container {
-    max-width: 1240px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #E1EBE2;
+    padding: 12px 24px;
 }
 
 .menu-tabs {
+    max-width: 760px;
+    margin: 0 auto;
     display: flex;
-    gap: 8px;
+    gap: 16px;
     overflow-x: auto;
     scrollbar-width: none;
 }
 
-.menu-tabs::-webkit-scrollbar { display: none; }
+.menu-tabs::-webkit-scrollbar {
+    display: none;
+}
 
 .tab-btn {
-    background: transparent;
-    border: 1px solid transparent;
-    color: var(--text-secondary);
-    padding: 6px 16px;
-    border-radius: var(--radius-sm);
+    background: none;
+    border: none;
+    color: #334E39;
+    padding: 6px 14px;
+    border-radius: 20px;
     font-size: 0.88rem;
     font-weight: 500;
     cursor: pointer;
     white-space: nowrap;
-    transition: var(--transition);
+    transition: all 0.2s ease;
 }
 
 .tab-btn:hover {
-    color: var(--text-primary);
-    background: rgba(0, 0, 0, 0.03);
+    color: #122416;
 }
 
 .tab-btn.active {
-    background: var(--warm-chai-dark);
-    color: #FAF6EE;
-    border-color: var(--warm-chai-dark);
+    background: #133E20;
+    color: #A5D6A7;
+    font-weight: 600;
 }
 
-.filter-chips {
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-}
-
-.chip-btn {
-    background: var(--parchment-card);
-    border: 1px solid var(--glass-border);
-    color: var(--text-secondary);
-    padding: 5px 14px;
-    border-radius: var(--radius-sm);
-    font-size: 0.82rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.chip-btn:hover {
-    border-color: var(--text-primary);
-    color: var(--text-primary);
-}
-
-.chip-btn.active {
-    background: var(--warm-chai-dark);
-    color: #FAF6EE;
-    border-color: var(--warm-chai-dark);
-}
-
-/* Menu Grid Container */
+/* Menu Container */
 .menu-container {
-    max-width: 1140px;
+    max-width: 760px;
     margin: 40px auto 0;
     padding: 0 24px;
 }
 
 .menu-section {
-    margin-bottom: 50px;
-    scroll-margin-top: 180px;
+    margin-bottom: 52px;
+    scroll-margin-top: 160px;
 }
 
 .section-title-wrap {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
     padding-bottom: 10px;
-    margin-bottom: 24px;
-    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 16px;
+    border-bottom: 2px solid #133E20;
 }
 
 .section-title-wrap h2 {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--warm-chai-dark);
+    font-family: var(--font-heading, Georgia, serif);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: #122416;
+    margin: 0;
 }
 
 .section-count {
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    background: var(--parchment-card);
-    border: 1px solid var(--glass-border);
-    padding: 3px 12px;
-    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #5C7A63;
 }
 
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
-}
-
-.menu-card {
-    background: var(--parchment-card);
-    border-radius: var(--radius-md);
-    padding: 22px;
-    border: 1px solid var(--glass-border);
+/* Simple Elegant List Items */
+.menu-list {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    transition: var(--transition);
 }
 
-.menu-card:hover {
-    border-color: var(--text-primary);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-}
-
-.menu-item-header {
+.menu-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: 12px;
-    margin-bottom: 8px;
+    padding: 14px 10px;
+    border-bottom: 1px solid #F0F5F1;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.18s ease;
 }
 
-.menu-item-header h3 {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--warm-chai-dark);
-    line-height: 1.3;
+.menu-item:hover {
+    background: #F7FAF7;
 }
 
-.diet-tag {
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 2px 8px;
-    border-radius: var(--radius-sm);
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    margin-bottom: 4px;
+.item-info {
+    display: flex;
+    flex-direction: column;
 }
 
-.diet-tag.veg {
-    background: #EFF5EC;
-    color: var(--status-green);
-    border: 1px solid rgba(43, 89, 56, 0.2);
-}
-
-.diet-tag.nonveg {
-    background: #FDF2F2;
-    color: var(--status-red);
-    border: 1px solid rgba(140, 45, 45, 0.2);
-}
-
-.menu-card .price {
-    font-family: var(--font-body);
+.menu-item h3 {
+    margin: 0;
+    font-family: var(--font-heading, Georgia, serif);
     font-size: 1.05rem;
     font-weight: 600;
-    color: var(--warm-chai-dark);
+    color: #122416;
+    transition: color 0.18s ease;
+}
+
+.menu-item:hover h3 {
+    color: #1E6B37;
+}
+
+.item-sub {
+    font-size: 0.82rem;
+    color: #5C7A63;
+    margin-top: 2px;
+}
+
+.dots {
+    flex-grow: 1;
+    border-bottom: 1px dotted #C8E6C9;
+    margin: 0 8px;
+}
+
+.menu-item .price {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #133E20;
     white-space: nowrap;
 }
 
-.menu-card .description {
-    font-size: 0.88rem;
-    color: var(--text-secondary);
-    line-height: 1.55;
-    margin-bottom: 18px;
+/* Applied by menu.js while searching or changing categories. */
+.menu-item.hidden,
+.menu-section.hidden {
+    display: none;
 }
 
-.menu-card-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 12px;
-    border-top: 1px solid var(--glass-border);
-}
-
-.bestseller-badge {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--amber-gold);
-    background: var(--cream-warm);
-    border: 1px solid var(--glass-border);
-    padding: 3px 10px;
-    border-radius: var(--radius-sm);
-}
-
-.tag-info {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-}
-
-.btn-order-item {
-    background: var(--parchment-card);
-    color: var(--warm-chai-dark);
-    border: 1px solid #D5DCD0;
-    padding: 6px 14px;
-    border-radius: var(--radius-sm);
-    font-size: 0.82rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.btn-order-item:hover {
-    background: var(--warm-chai-dark);
-    color: #FAF6EE;
-    border-color: var(--warm-chai-dark);
-}
-
-/* Hidden when filtered */
-.menu-card.hidden { display: none !important; }
-.menu-section.hidden { display: none !important; }
-
-/* Responsive */
 @media (max-width: 768px) {
-    .menu-hero-content h1 { font-size: 2.2rem; }
-    .sticky-filter-bar { top: 70px; padding: 10px 16px; }
-    .filter-bar-container { flex-direction: column; align-items: flex-start; gap: 8px; }
-    .menu-grid { grid-template-columns: 1fr; }
+    .menu-container { padding: 0 16px; margin-top: 24px; }
+    .menu-hero-header { padding: 36px 16px 24px; }
+    .menu-hero-content h1 { font-size: 2.1rem; }
+    .sticky-filter-bar {
+        top: 64px;
+        padding: 10px 16px;
+    }
+    .menu-tabs {
+        -webkit-overflow-scrolling: touch;
+        gap: 8px;
+    }
+    .tab-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+    .menu-section {
+        margin-bottom: 36px;
+        scroll-margin-top: 130px;
+    }
+    .menu-item {
+        padding: 12px 6px;
+    }
 }
+

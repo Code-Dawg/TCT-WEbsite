@@ -30,3 +30,28 @@ class GalleryPhoto(models.Model):
 
     def __str__(self):
         return self.caption or f'Cafe photo #{self.pk}'
+
+
+CATEGORY_CHOICES = [
+    ('announcement', 'Announcement 📢'),
+    ('blog', 'Blog / Article 📝'),
+    ('moment', 'Cafe Moment 📸'),
+]
+
+
+class CafePost(models.Model):
+    title = models.CharField(max_length=200)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='moment')
+    content = models.TextField(blank=True, help_text="Story, blog text, or announcement details.")
+    image = models.FileField(upload_to='gallery/%Y/%m/%d/', validators=[validate_cafe_photo], blank=True, null=True)
+    is_pinned = models.BooleanField(default=False, help_text="Pin to top announcement banner")
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-is_pinned', '-created_at']
+
+    def __str__(self):
+        return f"[{self.get_category_display()}] {self.title}"
+

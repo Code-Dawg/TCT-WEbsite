@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-fkfq_3##xc@5cwlrvyxvs5f+94+bj^p3e@jk(8n*_3213v=$yb
 DEBUG = True
 
 # Permit Django's development server and test client while DEBUG is enabled.
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'testserver']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'testserver', '*']
 
 
 # Application definition
@@ -124,8 +124,13 @@ import os
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
+
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Visitor-uploaded gallery images (use managed object storage in production).
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Option C: Allow all hosts (for temporary local testing only)
+ALLOWED_HOSTS = ['*']

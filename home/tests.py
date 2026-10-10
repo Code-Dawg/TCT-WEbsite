@@ -9,4 +9,4 @@ class HomeAppTests(TestCase):
         response = self.client.get(reverse('display'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'index.html')
-        self.assertContains(response, 'Experience the True Taste')
+        self.assertContains(response, 'The Cutting Tea')

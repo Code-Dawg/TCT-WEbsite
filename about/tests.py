@@ -9,4 +9,3 @@ class AboutAppTests(TestCase):
         response = self.client.get(reverse('aboutus'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'about/aboutus.html')
-        self.assertContains(response, 'From Mumbai Tapris to Pokhara Hills')

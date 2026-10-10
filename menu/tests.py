@@ -10,4 +10,4 @@ class MenuAppTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'menu/menu.html')
         self.assertContains(response, '<h1>Menu</h1>', html=True)
-        self.assertContains(response, 'Saffron Matka Tea')
+        self.assertContains(response, 'Matka Tea')

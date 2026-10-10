@@ -7,11 +7,11 @@
 }
 
 .locations-hero {
-    background: var(--warm-chai-dark);
-    color: var(--cream-warm);
-    padding: 70px 24px 80px;
+    background: #FFFFFF;
+    color: var(--text-primary);
+    padding: 64px 24px 48px;
     text-align: center;
-    border-bottom: 1px solid #1F2C1B;
+    border-bottom: 1px solid #E1EBE2;
 }
 
 .locations-hero-content {
@@ -24,11 +24,12 @@
     font-size: 3rem;
     font-weight: 600;
     margin: 10px 0 16px;
+    color: #122416;
 }
 
 .locations-hero-content p {
     font-size: 1.05rem;
-    color: rgba(255, 248, 240, 0.82);
+    color: #334E39;
 }
 
 .locations-container {
@@ -266,7 +267,20 @@
 }
 
 @media (max-width: 768px) {
+    .locations-hero { padding: 36px 16px 28px; }
     .locations-hero-content h1 { font-size: 2.2rem; }
-    .location-info { padding: 24px; }
-    .contact-inquiry-section { padding: 24px; }
+    .locations-container { padding: 0 16px; }
+    .locations-grid { margin: 32px 0 48px; gap: 24px; }
+    .location-info { padding: 20px 16px; }
+    .contact-inquiry-section { padding: 20px 16px; }
+    .contact-form-panel { padding: 18px 14px; }
+    .map-container { min-height: 280px; }
+    .detail-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+    .detail-row dt {
+        width: auto;
+    }
 }
+

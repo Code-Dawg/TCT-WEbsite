@@ -61,3 +61,11 @@
 .main{
     background-color: var(--cream-warm);
 }
+
+@media (max-width: 768px) {
+    .slider-container {
+        height: 260px;
+        margin: 20px auto;
+        border-radius: 8px;
+    }
+}
